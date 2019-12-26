@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test 2</title>
+    <style>
+
+
+        body {
+            line-height: 1.6;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Test 2</h1>
+    <ol>
+        <li>Write a function which count the number of occurrence of words in a paragraph or a sentence.The function countWords takes a paragraph and two words as parameters. It compare which word is most frequently occurred in the paragraph.</li>
+        <li>Write a function which takes an array parameter and returns an array of the data types of each item:</li>
+        <li>Create a function which filter ages greater than 18.</li>
+        <li>Write a function which calculate the average age of the group.</li>
+        <li>Write a function named shuffle, it takes an array parameter and it returns a shuffled array.</li>
+        <li>Write a function which can generate a random Finnish car code.</li>
+        <li>The following shopping cart has four products. Create an addProduct, removeProduct ,editProduct, removeAll functions to modify the shopping cart.</li>
+        <li>The following todoList has three tasks. Create an addTask, removeTask, editTask, toggleTask, toggleAll, removeAll functions to modify the todoList.
+        </li>
+        <li>Write a function which check if items of an array are unique.</li>
+        <li>Write a function which filter users who has scoresGreaterThan85, Write a function which addUser to the user array only if the user does not exist. Write a function which addUserSkill which can add skill to a user only if the user exist. Write a function which editUser if the user exist in the users array.</li>
+
+    </ol>
+    <script>
+    
+
+    //1. Write a function which count the number of occurrence of words in a paragraph or a sentence.The function countWords takes a paragraph and two words as parameters. It compare which word is most frequently occurred in the paragraph.
+    const paragraph = 'I love teaching. If you do not love teaching what else can you love. I love JavaScript if you do not love something which can give life to your application what else can you love.';
+
+    console.log(paragraph.match(/love/ig))
+    
+
+    countWords = () => {
+        word1 = "love"
+        word2 = "you"
+        let word1Count = (paragraph.match(/love/g) || []).length;
+        let word2Count = (paragraph.match(/you/g) || []).length;
+        word1Count > word2Count ? console.log(`The word" ${word1}" comes ${word1Count} times while word "${word2}" comes ${word2Count} times`) : console.log(`${word2} comes ${word2Count} times while word ${word1} comes ${word1Count} times.`)
+
+    } 
+    console.log(countWords())
+      
+
+    //2. Write a function which takes an array parameter and returns an array of the data types of each item:
+    console.log("=========== type of =============");
+        checkDataTypes = (arr) => {
+            let typeOfArray = []
+            for (let i = 0; i < arr.length; i++) {
+                typeOfArray.push(typeof arr[i])
+        }
+            return typeOfArray;
+        }
+
+        console.log(checkDataTypes(['Asabeneh', 100, true, null, undefined, {job:'teaching'}]));
+        
+    //3 Create a function which filter ages greater than 18.
+    console.log("=========== age grater than 18 =============");
+
+        agesGreaterEighteen = (ages) => {
+            let output = [];
+            for (let i = 0; i < ages.length; i++) {
+                if(ages[i] > 18) {
+                    output.push(ages[i]);
+                }
+            }
+
+            return output;
+        }
+        console.log(agesGreaterEighteen([35, 30, 40, 18, 15, 22, 16, 20]));
+
+        
+
+    //.4 Write a function which calculate the average age of the group.
+    console.log("============== average age =============")
+        averageAge = (ages) => {
+            let sum = 0;
+            for (let i = 0; i < ages.length; i++) {
+                sum = Math.round((sum + ages[i] / ages.length));
+            }
+
+            return sum;
+        }
+        console.log(averageAge([35, 30, 18, 15, 22, 16, 20]));
+
+    //5. Write a function named shuffle, it takes an array parameter and it returns a shuffled array.
+    console.log("============ shuffle an array ===========")
+    const shuffleArr = (arrayCars) => {
+        //loop into the length of the array in reverse
+        for (let i = arrayCars.length - 1; i > 0; i--) {
+            //generate a random index from the array and store it into a variable
+            const random = Math.round(Math.random() * i);
+
+            const randTemp = arrayCars[i];
+            //the index of array of cars is equal to the random index
+            arrayCars[i] = arrayCars[random];
+            arrayCars[random] = randTemp
+
+        }
+        return arrayCars
+    }
+
+    console.log(shuffleArr(["Volvo", "Nissan", "Toyota", "Honda", "Mercedes"]));
+    
+
+    //6. Write a function which can generate a random Finnish car code.
+    console.log("============ write a function that generates a random finnish car code")
+    //create a set of letters and numbers and split them into separate strings
+    genCarPlateNum = () => {
+    let letters = "ABCDEFGHIJKLMNOPQRSTUVWYXZ".split("");
+    let numbers = "1234567890".split("");
+    //create a placeholder to store the car code
+    let carCodeLetters = [];
+    let carCodeNumbers = [];
+    //loop through the letters
+    for (let i = 0; i < 3; i++) {
+        let randomLetters = letters[Math.floor(Math.random () * letters.length)]
+        carCodeLetters.push(randomLetters);
+    } 
+    //loop through the numbers
+        for (let i = 0; i < 3; i++) {
+        let randomNumbers = numbers[Math.floor(Math.random () * numbers.length)]
+        carCodeNumbers.push(randomNumbers);
+    } 
+        //carCode = carCodeLetters.join("") + carCodeNumbers.join("")
+        let carCode = `${carCodeLetters.join("")}-${carCodeNumbers.join("")}` 
+        return carCode
+    }
+    console.log(genCarPlateNum())
+
+
+
+    //7. The following shopping cart has four products. Create an addProduct, removeProduct ,editProduct ,      removeAll functions to modify the shopping cart.
+
+        console.log("================= addproduct ===========");
+
+        //addProduct
+        const shoppingCart = ['Milk','Coffee','Tea', 'Honey'];
+        addProduct = (item) => {
+            shoppingCart.push(item);
+            return shoppingCart; 
+        }
+
+        console.log(addProduct("Avocado"));
+
+        console.log('======== remove product ================')
+        //removeProduct
+        removeProduct = (item, index) => {
+            shoppingCart.splice(item, index);
+            return shoppingCart;
+        }
+
+        console.log(removeProduct(3,1));
+
+        console.log('=============== edit product ==============')
+        //editProduct
+        editProduct = (item, index, sub) => {
+            shoppingCart.splice(item, index, sub);
+            return shoppingCart;
+
+        }
+
+        console.log(editProduct(2,1,'Beer'));
+
+        console.log('================= remove all products ==============')
+        //removeAll
+        removeAll = (item) => {
+            shoppingCart.splice(item)
+            console.log(shoppingCart);
+        }
+
+        removeAll(0);
+
+
+        //8. The following todoList has three tasks. Create an addTask, removeTask, editTask, toggleTask, toggleAll, removeAll functions to modify the todoList.
+
+        console.log("======== add, remove, edit, toggle, remove all tasks from todo list ========")
+
+        const todoList = [
+            {
+	            task:'Prepare JS Test',
+	            time:'4/3/2019 8:30',
+	            completed:true
+	
+            },
+            {
+	            task:'Give JS Test',
+	            time:'4/3/2019 10:00',
+	            completed:false
+	
+            },
+            {
+	            task:'Assess Test Result',
+	            time:'4/3/2019 1:00',
+	            completed:false
+	
+            }]
+
+        //display todo list
+        console.log('============ display todo list ==============')
+        console.log(todoList);
+
+        //addTask to todolist
+        console.log('================= addTask to todolist ================')
+        addTask = (task, time, completed) => {
+            todoList.push({task, time, completed});
+            return todoList;
+        }
+
+        console.log(addTask('Go to gym', '4/3/2019 10:00', false));
+
+        //remove task from todolist
+        /*console.log('================= remove task from todolist ================')
+        removeTask = (task, index) => {
+            todoList.pop(task, index);
+            return todoList;
+        }
+
+        console.log(removeTask(2,1));
+/*
+        //edit task from todolist
+        editTask = (task, time, completed) => {
+            todoList[1] = ({task,time, completed})
+            return todoList;
+        }
+
+        console.log(editTask("watch movie", "1 hour", false));*/
+
+
+        //9. Write a function which check if items of an array are unique?
+        console.log("============= check if array items are unique")
+        checkUniqueness = (arr) => {
+            let uniqueValues = [];
+            //loop into the array
+            for (let i = 0; i < arr.length; i++) {
+                let value = arr[i];
+                //compare numbers in array
+                if (uniqueValues.indexOf(value) !== -1) {
+                    return false
+                } 
+                uniqueValues.push(value)
+                
+            }
+            return true
+
+        }
+
+        console.log(checkUniqueness(["New York", "Milan", "Rome", "Lima", "PAris", "London"]));
+
+        //10. Write a function which filter users who has scoresGreaterThan85, Write a function which addUser to the user array only if the user does not exist. Write a function which addUserSkill which can add skill to a user only if the user exist. Write a function which editUser if the user exist in the users array.
+
+        const users = [
+                        {
+	                        name:'Brook', 
+	                        scores:75,
+	                        skills:['HTM', 'CSS', 'JS'],
+	                        age:16
+                        },
+
+                        {
+	                        name:'Alex', 
+	                        scores:80,
+	                        skills:['HTM', 'CSS', 'JS'],
+	                        age:18
+                        }, 
+
+                        {
+	                        name:'David', 
+	                        scores:75,
+	                        skills:['HTM', 'CSS'],
+	                        age:22
+                        }, 
+
+                        {
+	                        name:'John', 
+	                        scores:85,
+	                        skills:['HTM'],
+	                        age:25
+                        },
+
+                        {
+	                        name:'Sara',
+	                        scores:95,
+	                        skills:['HTM', 'CSS', 'JS'],
+	                        age: 26
+                        },
+
+                        {
+	                        name:'Martha', 
+	                        scores:80,
+	                        skills:['HTM', 'CSS', 'JS'],
+	                        age:18
+                        },
+
+                        {
+	                        name:'Thomas',
+	                        scores:90,
+	                        skills:['HTM', 'CSS', 'JS'],
+	                        age:20
+                        }
+                        ];
+
+    scoresGreaterThan85 = () => {
+        let count = 0;
+        for(const user in users) {
+
+            if(users[user].scores > 85) {
+                count ++;
+            }
+
+        }
+        return count
+
+    }
+
+    console.log(`There are ${scoresGreaterThan85()} users with scores greater than 85`);
+
+    const numbers = [10,20,30,40,50];
+    const total = numbers.reduce((count, current) => count + current);
+    console.log(total);
+
+
+    </script>
+    
+</body>
+</html>

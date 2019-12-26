@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM Exercises</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        .random-numbers__container {
+            display: flex;
+            justify-content: space-between;
+            
+        }
+    
+        .random-hexa__container {
+            display: flex;
+        }
+       
+    </style>
+    <script src="countries.js"></script>
+</head>
+
+<body>
+
+    <h1>DOM Exercises</h1>
+    <p class="paragraph" id="first-paragraph">First Paragraph</p>
+    <p class="paragraph" id="second-paragraph">Second Paragraph</p>
+    <p class="paragraph" id="third-paragraph">Third Paragraph</p>
+    <p></p>
+    <h2></h2>
+    <div class="random-numbers__container">
+    <div></div>
+</div>
+
+    <h1>Use the rgb color generator function or hexaColor generator to create 10 divs with random background colors</h1>
+    <div></div>
+
+    <div class="bmi-calculator">
+        <input type = 'text' class='height' placeholder="Mass in kilograms" />
+        <input type = 'text' class='mass' placeholder="Height in cm" />
+        <button>Calculate BMI</button>
+        <p>Your BMI is: <span id="bmi-result">0</span></p>
+        <p id="feedback-display"></p>
+
+    </div>
+
+    <div class="countries-wrapper">
+        <button class="sort-btn">Sort Countries</button>
+        <div class="country-box"></div>
+    </div>
+
+    <script>
+    
+    //1. Create an index.html file and put four p elements as above: Get the first paragraph by using document.querySelector(tagname) and tag name
+    let allParagraphs = document.querySelector('p');
+    console.log(allParagraphs);
+
+    //2. Get get each of the the paragraph using document.querySelector('#id') and by their id 
+    let firstParagraph = document.getElementById('first-paragraph');
+    let secondParagraph = document.getElementById('second-paragraph');
+    let thirdParagraph = document.getElementById('third-paragraph');
+
+    //3. get all the p as nodeList using document.querySelectorAll(tagname) and by their tag name
+    //4. Loop through the nodeList and get the text content of each paragraph
+    let allPar = document.querySelectorAll('p');
+    console.log(allPar.length);
+    for (let i = 0; i < allPar.length; i++) {
+        console.log(allPar[i]);
+    }
+    allPar.forEach(par => console.log(par));
+    
+    //5. Set a text content to paragraph the fourth paragraph,Fourth Paragraph
+    allPar[3].className = 'paragraph';
+    allPar[3].id = 'fourth-paragraph';
+    allPar[3].textContent = 'Fourth Paragraph';
+
+    //6. Set id and class attribute for all the paragraphs using different attribute setting methods
+    
+    //7. Change stye of each paragraph using JavaScript(eg. color, background, border, font-size, font-family)
+    firstParagraph.style.color ='red';
+    secondParagraph.style.fontSize = '24px';
+    thirdParagraph.style.color = 'white';
+    thirdParagraph.style.background = 'yellow';
+    allPar.forEach(par => par.style.border = '1px solid blue')
+    
+    //8.align-items-lg-baseline Select all paragraphs and loop through each elements and give the first and third paragraph a color of color, and the second and the fourth paragraph a red color
+    let paragraph = document.querySelectorAll('p');
+    paragraph.forEach((paragraph, i) => {
+        if(i % 2 === 0) {
+            paragraph.style.color = 'green';
+        } else {
+            paragraph.style.color = 'red';
+        }
+    })
+    
+    //9. Remove all the paragraph and create them using JavaScript
+    //10. Set text content, id and class to each paragraph
+
+    //11. Create a div container on HTML document and create 100 numbers dynamically and append to the container div. Put each number in 150px by 150px box. If the number is even the background will be lightgreen else lightblue.
+    //Create h2
+    let title = document.querySelector('h2');
+    title.className = 'title';
+    title.textContent = 'Create a div container on HTML document and create 100 numbers dynamically and append to the container div. Put each number in 150px by 150px box. If the number is even the background will be lightgreen else lightblue.';
+    title.style.fontSize = '20px';
+
+    //Create 100 divs with numbers
+    let numbers;
+    for (let i = 0; i <= 100; i++) {
+        console.log(i)
+        numbers = document.createElement('div');
+        numbers.className = 'box-number';
+        numbers.textContent = i;
+        numbers.style.border = '2 px solid black';
+        numbers.style.padding = '2px';
+        numbers.style.height = '150px';
+        numbers.style.width = '150px';
+        if(i % 2 === 0) {
+            numbers.style.background = 'lightgreen';
+        } else {
+            numbers.style.background = 'lightblue';
+        }
+        document.body.appendChild(numbers);
+    }
+
+    //12. Use the rgb color generator function or hexaColor generator to create 10 divs with random background colors
+
+    const generateHexaColors = () => {
+        let hexaLettersNumbers = '1234567890abcdef'.split('');
+        let hexaOutput = [];
+        //looping through letters
+        for (let i = 0; i < 6; i++) {
+            let randomHexaLetterNum = hexaLettersNumbers[Math.floor(Math.random () * hexaLettersNumbers.length)]
+            hexaOutput.push(randomHexaLetterNum);
+        }
+
+        return `#${hexaOutput.join('')}`;
+
+    }
+
+    console.log(generateHexaColors());
+
+    let secondTitle = document.getElementsByClassName('second-title');
+    secondTitle.textContent = 'Use the rgb color generator function or hexaColor generator to create 10 divs with random background colors';
+
+
+    let hexaBox;
+    for (let i = 0; i <= 10; i++) {
+        hexaBox = document.createElement('div');
+        hexaBox.className = 'hexa-color-box';
+        hexaBox.style.height = '150px';
+        hexaBox.style.width = '150px';
+        hexaBox.textContent = generateHexaColors()
+        hexaBox.style.background = generateHexaColors(); 
+        hexaBox.style.color = 'white';
+        hexaBox.style.padding = '3.3em 2em';
+        hexaBox.style.fontSize = '20px';
+    
+        document.body.appendChild(hexaBox);
+
+    }
+
+   
+
+    
+
+    //13.align-items-sm-baseline Use the countries.js to visualize all the countries on the HTML document. You need one wrapper div and box for each countries. In the box display, the letter the country starts with, the name of the country and the number of characters for the country name.
+    
+    let countriesWrapper = document.querySelector('countries-wrapper');
+    let countryBox = document.querySelector('country-box');
+    let sortCountries = document.querySelector('sort-btn')
+
+    for (let i = 0; i < countries.length; i++) {
+    countriesWrapper = document.createElement('div');
+    countriesWrapper = document.createElement('h1');
+    countryBox = document.createElement('div')
+    countryBox.textContent = countries[i];
+    countryBox.style.background = '#2508ae';
+    countryBox.style.color = 'white';
+    countryBox.style.border = '1px solid white'
+    countryBox.style.fontSize = '20px';
+    countryBox.style.padding = '2em';
+    document.body.appendChild(countryBox);
+
+}
+
+
+
+
+
+    // DOM: Mini Projects    
+    // BMI calculator
+
+    const mass = document.querySelector('.mass');
+    const height = document.querySelector('.height');
+    const button = document.querySelector('button');
+
+
+    let BMI;
+    button.addEventListener('click', calculateBMI = () => {
+        let bmiResult = document.getElementById('bmi-result');
+        let feedback = document.getElementById('feedback-display');
+
+        BMI =  (mass.value / (height.value ** 2)) *100000;
+        console.log(BMI)
+        bmiResult.textContent = BMI;
+        if(BMI > 18.5 || BMI === 24.9) {
+            feedback.textContent = 'You are normal weight'
+        } else if (BMI >= 18.5 || BMI === 24.9) {
+        console.log('Normal Weight')
+        } else if (BMI === 25 || BMI === 29.9) {
+        console.log('Overweight')
+        } else if (BMI >= 30) {
+        console.log('Obese')
+        }
+        return BMI
+
+    })
+
+    bmiCalculator = (mass, height) => {
+        let bmi = mass / (height**2); 
+        console.log(bmi);
+    }
+    console.log(bmiCalculator(60, 1.70))
+
+
+     
+
+    console.log(calculateBMI())
+
+
+
+
+
+    // Hexadecimal or RGB color Generator
+    // World Countries List
+    
+    
+    </script>
+</body>
+</html>

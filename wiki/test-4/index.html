@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test 4</title>
+</head>
+<body>
+    <h1>Test 4</h1>
+    
+
+<script>
+//a. Create a function called reverse which take a parameter and it returns the reverse of the parameter. Don't use the built in reverse method.
+
+const reverseString = (str) => {
+    let reversedArr = [];
+    let splitted = str.split('');
+    let newLength = splitted.length -1;
+    console.log(splitted);
+
+    while(splitted.length) {
+        reversedArr.push(splitted.pop());
+
+    }
+    return reversedArr.join('');
+    
+}
+
+console.log(reverseString('Kati'));
+
+//b. Create a function called isPalindrome which check if a parameter is a palindrome or not. Use the function from a to reverse words.
+
+const isPalindrome = (str) => {
+   
+    let regEx = /[^A-Za-z0-9]/g;
+    str = str.toLowerCase().replace(re,'');
+    let len = str.length;
+
+    for (let i = 0; i < len / 2; i++) {
+        if (str[i] !== str[len - 1 - i]) {
+            return false
+        }
+    }
+    return true
+    
+}
+
+console.log(isPalindrome('Anna'));
+
+
+
+</script>
+</body>
+</html>

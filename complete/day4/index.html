@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objects</title>
+</head>
+<body>
+<h1>Objects</h1>
+    <script>
+
+        //it is advisable not to use camelcase with object
+        const person = {
+            firstname: 'Michele',
+            lastname: 'Zucca',
+            country: 'Finland',
+            city: 'Helsinki',
+            yearofbirth: 1981,
+            ismarried: false,
+            skills: [
+                'HTML', 'CSS', 'JavaScript'
+            ],
+            getFullInfo() {
+                return `${this.firstname} ${this.lastname} lives in ${this.city}, ${this.country}, he is ${this.calculateAge()} years old, he is a ${this.job} and has ${this.countSkills()} skills: ${this.skills.toString()}, and speaks the following languages: ${this.languages.toString()}`
+            },
+            countSkills() {
+                let count = 0;
+                for (let i = 0; i < this.skills.length; i++) {
+                    count = count + i;
+
+                }
+                return count
+
+            },
+            calculateAge() {
+                return 2019 - this.yearofbirth
+            },
+            languages: ['English', 'Italian', 'Finnish', 'Spanish']
+            
+        }
+
+            console.log(person);
+            console.log(person.firstname);
+            console.log(person['firstname']);
+            console.log(person.skills);
+
+            person.nationality = 'Italian';
+            console.log(person);
+            person.city = 'Espoo';
+            console.log(person);
+            person.job = 'Junior Developer';
+            console.log(person.getFullInfo())
+            console.log(person.countSkills())
+
+        let a = 1;
+        console.log(a);
+        a++;
+        console.log(a++);
+        b = a;
+        console.log(b);
+
+        //Object methods
+        //keys, values, assign, entries
+
+        const student = {
+            firstname: 'Michele',
+            lastname: 'Zucca',
+            country: 'Helsinki',
+            address: {
+                street: 'Roihuvuorentie',
+                postcode: '00909',
+                city: 'Helsinki'
+            },
+            age: 25
+        }
+        console.log(student);
+        const keys = Object.keys(student);
+        console.log(keys);
+        console.log(student.address.city);
+        console.log(student['address']['city']);
+        student['phone number'] = '272739278';
+        console.log(student['phone number']);
+        console.log(keys.length);
+
+        const values = Object.values(student);
+        console.log(values);
+        const entries = Object.entries(student);
+        console.log(entries);
+
+        //Copy object
+        const copyStudent = Object.assign({}, student);
+        console.log(copyStudent);
+        copyStudent.firstname = 'John';
+        copyStudent.lastname = 'Doe';
+        copyStudent.nationality = "American";
+        console.log(copyStudent);
+        console.log(student);
+
+        for (const key in student) {
+            console.log('The keys are:', key)
+        }
+      
+        console.log(student.hasOwnProperty('nationality'));
+        console.log(copyStudent.hasOwnProperty('nationality'));
+
+        
+        
+    
+        </script>
+
+    
+</body>
+</html>

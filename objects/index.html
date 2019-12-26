@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objects</title>
+</head>
+<body>
+
+    <h1>JavaScripts Objects</h1>
+
+    <h2>Person Object Example</h2>
+    
+    <ul>
+        <li>First Name: <span class="first-name"></span> </li>
+        <li>Last Name: </li>
+
+
+    </ul>
+      
+
+    <script>
+
+
+        const person = {
+            firstName: "Michele",
+            lastName: "Zucca",
+            age: 28,
+            profession: "Web Developer",
+            citizienship: "Italian",
+            domicile: "Helsinki",
+            skills: [
+                'HTML',
+                'CSS',
+                'JavaScript',
+                'React',
+                'Sass',
+                'Python',
+            ],
+            //let's get a fullname with a method
+            getFullName: function() {
+                return this.firstName + " " + this.lastName
+            }
+        } 
+        console.log(person.age);
+        console.log(person.skills);
+        console.log(person.getFullName());
+        person.hobbies = ['Music', 'Coding', 'Finance', 'Travel'];
+        console.log(person);
+        console.log(person.skills.sort());
+        const copyPerson = Object.assign({},person);
+        console.log(copyPerson);
+        const keys = Object.keys(copyPerson);
+        console.log(keys);
+        const values = Object.values(copyPerson);
+        console.log(values);
+        const entries = Object.entries(copyPerson);
+        console.log(entries);
+        console.log(copyPerson.hasOwnProperty('Michele'));
+        
+
+        
+
+        const rectangle = {
+            width: 20,
+            length: 20,
+            getArea: function() {
+                return this.length * this.width 
+            },
+            getPerimeter: function() {
+                return 2 * (this.length + this.width)
+            }
+        }
+        console.log(rectangle.width);
+        console.log(rectangle.getArea());
+        console.log(rectangle.getPerimeter());
+
+    
+
+    //Date Object
+
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth() + 1;
+        const date = now.getDate();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        console.log(`Today is ${now}`);
+        console.log(`Time is ${hours}:${minutes} minutes of ${month}/${year}`)
+
+    //Exerciese Objects
+
+    //1. Create an empty object called dog
+        console.log('====== Create an empty object called dog ======')
+        const dog = {};
+    //2. Print the the dog object on the console
+        console.log('====== Print the the dog object on the console ======')
+        console.log(dog);
+        
+    //3. Add name, legs, color, age and bark properties for the dog object. The bark property is a method which return woof woof
+        console.log('====== Add name, legs, color, age and bark properties for the dog object. =====')
+        dog.name ="Pepsi";
+        dog.legs = 4;
+        dog.age = 2;
+        dog.color = "white";
+        dog.bark = function() {
+            return "Woof Woof"
+        }
+        console.log(dog.bark())
+        console.log(dog)
+
+    //4. Get name, legs, color, age and bark value from the dog object
+        console.log('===== Get name, legs, color, age and bark value from the dog object ===')
+        const dogValues = Object.values(dog);
+        console.log(dogValues);
+    //5. Set new properties the dog object: breed, getDogInfo
+        dog.breed = "Golden Retreiver"
+        dog.getDogInfo = function() {
+            const dogValues = Object.values(dog);
+            return dog;
+        }
+
+        console.log(dog.getDogInfo());
+
+    //6. Create an object literal called personAccount. It has firstName, lastName, incomes, expenses properties and it has totalIncome, totalExpense, accountInfo, addIncome, addExpense and accountBalance methods. Incomes is a set of incomes and its description and the same for expenses.
+        console.log('===== Create an object literal called personAccount. ======')
+        personAccount = {
+            firstName: "John",
+            lastName: "Gaddis",
+            income:  
+                     {
+                        salary: 4000,
+                        dividends: 300, 
+                        property: 300, 
+                        funds: 100 
+                    },
+
+            expenses:  
+                    {
+                        mortgage: 1000,
+                        bills: 200,
+                        daycare: 200 
+                        },
+            
+
+            totalIncome: function() {
+                const income = Object.values(personAccount.income); 
+                let count = 0;
+                for (const item in income) {
+                    count = count + income[item];
+                }
+                return count;     
+           
+            },
+
+            totalExpenses: function() {
+                const expenses = Object.values(personAccount.expenses);
+                let count = 0;
+                for (const item in expenses) {
+                    count = count + expenses[item];
+                }
+
+                return count;
+
+            },
+
+            accountBalance: function() {
+                totalIncome = `${personAccount.totalIncome()}`;
+                totalExpenses = `${personAccount.totalExpenses()}`;
+                accountBalance = totalIncome - totalExpenses;
+                return accountBalance; 
+            },    
+
+            addIncome: function(type, amount) {
+                personAccount.income[type] = amount;
+                    
+                    
+            },
+            /*
+            addIncome: function() {
+                this.income.website = 200;
+
+            },
+
+            /*
+            addExpense: function() {
+                this.expense.car = 300
+            },
+            */
+
+            addExpense: function(type, amount) {
+                personAccount.expenses[type] = amount;
+       
+            },
+            
+            accountInfo: function() {
+                console.log(`Name is ${this.firstName} ${this.lastName}. He makes ${personAccount.totalIncome()} per month. He has expenses for ${personAccount.totalExpenses()} per month. His account balance is ${personAccount.accountBalance()}`)
+                
+            } 
+          
+            }
+
+
+            console.log(personAccount);
+            console.log('=========== totalIncome ============')
+            console.log(`${personAccount.firstName}'s account total income is ${personAccount.totalIncome()}`);
+           
+            console.log('=========== totalExpenses ============')
+            console.log(`${personAccount.firstName}'s account total expenses are ${personAccount.totalExpenses()}`);
+            
+            console.log('=========== accountBalance ============')
+            console.log(`${personAccount.firstName}'s account balance is ${personAccount.accountBalance()}`)
+
+            console.log('=========== accountInfo ============')
+            console.log(personAccount.accountInfo());
+
+            console.log('=========== addIncome ============')
+            console.log(`${personAccount.addIncome('bonus', 100)}`);
+            console.log(personAccount.income);
+
+            console.log('=========== addExpense ============')
+            console.log(`${personAccount.addExpense('baby', 200)}`);
+            //console.log(personAccount.expenses);
+            console.log(personAccount.expenses);
+            console.log(personAccount);
+            console.log(`${personAccount.firstName}'s account balance is ${personAccount.accountBalance()}`)
+
+
+
+
+            //7. Count logged in users,count users having greater than equal to 50 points from the following object.
+console.log(" Count logged in users,count users having greater than equal to 50 points from the following object.")
+
+            const users = {
+                    Alex: {
+                        email: 'alex@alex.com',
+                        skills: ['HTML', 'CSS', 'JavaScript'],
+                        age: 20,
+                        isLoggedIn: false,
+                        points: 30
+                    },
+
+                    Asab: {
+                        email: 'asab@asab.com',
+                        skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Redux', 'Node.js'],
+                        age: 25,
+                        isLoggedIn: false,
+                        points: 50
+                    },
+
+                    Brook: {
+                        email: 'daniel@daniel.com',
+                        skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Redux'],
+                        age: 30,
+                        isLoggedIn: true,
+                        points: 50
+                     },
+
+                    Daniel: {
+                        email: 'daniel@alex.com',
+                        skills: ['HTML', 'CSS', 'JavaScript', 'Python'],
+                        age: 20,
+                        isLoggedIn: false,
+                        points: 40
+                    },
+
+                    John: {
+                        email: 'john@john.com',
+                        skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Redux', 'Node.js'],
+                        age: 20,
+                        isLoggedIn: true,
+                        points: 50
+                    },
+
+                    Thomas: {
+                        email: 'thomas@thomas.com',
+                        skills: ['HTML', 'CSS', 'JavaScript', 'React'],
+                        age: 20,
+                        isLoggedIn: false,
+                        points: 40
+                    }
+                };
+
+                const userKeys = Object.keys(users);
+                const userValues = Object.values(users);
+                console.log(userKeys);
+                console.log(userValues);
+                console.log(users.Thomas.hasOwnProperty('isLoggedIn'));
+
+
+                let countLoggedIn = 0;
+                let countPoints = 0;
+                const names50Points = [];
+                const namesLoggedIn = [];
+                
+                for (const user in users) {
+                    console.log(user);
+                    if (users[user].isLoggedIn) {
+                        countLoggedIn ++
+                        namesLoggedIn.push(user);
+                    }
+                    if (users[user].points >= 50) {
+                        countPoints ++;
+                        names50Points.push(user);
+
+                    }
+ 
+                    
+                }
+                console.log(`There are ${countLoggedIn} logged in users.`);
+                console.log(`There are ${countPoints} users with greater than 50 points.`);
+                console.log(namesLoggedIn);
+                console.log(names50Points);
+
+                //users[user].points
+/*
+                //8. Set your name in the users object without modifying the original users object
+                let copyUsers = Object.assign({Michele: {email: 'michele.zucca81@gmail.com', skills: ['HTML, CSS, Sass, JavaScript, React, Python'], age: 28, isLoggedIn: true, points: 40}}, users);
+                console.log(copyUsers);
+                console.log(users);
+
+                //9. Get all keys or properties of users object
+                const userKeys = Object.keys(copyUsers);
+
+                //10. Get all the values of users object
+                const userValues = Object.values(users);
+                const userEntries = Object.entries(copyUsers)
+                console.log(userKeys, userValues, userEntries);
+
+                const loggedInValues = Object.values(isLoggedIn);
+                console.log(loggedInValues);*/
+
+              
+
+
+    </script>
+
+</body>
+</html>

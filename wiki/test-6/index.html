@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test 6</title>
+</head>
+
+<style>
+    body {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        line-height: 1.6;
+    }
+    
+    .bold {
+        font-weight: 700;
+    }
+</style>
+<body>
+
+    <h1>Test 6</h1>
+    <ol>
+        <li>
+            Explain the following questions in your own words
+
+            <ol>
+                <li class="bold">What is the difference between forEach, map, filter and reduce ? Explain these using your own words</li class="bold">
+                <p>Both forEach and Map take three element: value of the element, index of the element and the array object. Both return a callback function. The main difference is that forEach modifies the original array, while map returns a new array without modifying the original one. ForEach is preferrable when we are not looking into transforming the array items, but just iterate through them and print them out. </p>
+                <p>Filter creates a new array by removing items that do not belong to the array. Reduce takes all the element of an array and reduces them to a single value (for instance when working with mathematical operations). The callback of reduce takes an accumulator and current value as parameter and returns a single value.</p>
+                <li class="bold">Explain the difference between function declaration and arrow function ?                </li>
+
+                    <p>Arrow functions do not have their own bindings</p>
+                    <p>Arrow functions do not have an arguments array</p>
+                    <p>Arrow functions are callable but not constructable or cannot be used as methods.
+                        Functions created through function declarations can be both callable and constructable.
+                    </p>
+                <li class="bold">Explain the difference between find and findIndex ?
+                </li>
+                <p>Find returns the first element which satisfies the condition</p>
+                <p>Find Index returns the first index of the element which satisfies the condition</p>
+                <li class="bold">If you like to filter out one object element in an array which method do you like to use: filter or find ? Explain</li>
+                <p>If I want to filter out only one element (like first country with 6 words) I would use find, since it returns the first element with 6 words.</p>
+            </ol>
+        </li>
+        <li class="bold">Write a function called sumOfNumbers. It takes unlimited number of integers as parameters and it returns the sum.</li class="bold">
+        <li class="bold">Write a function which calculate mean, median and range of an array.</li>
+        <li class="bold">A junior developer structure student name, skills and score in array of arrays which may not easy to read. Destruction the following array name to name, skills array to skills, scores array to scores, JavaScript score to jsScore and React score to reactScore variable.</li>
+        <li class="bold">Write a function called convertArrayToObject which can convert the array to a structure object.</li>
+        <li>Copy the student object to newStudent without mutating the original object. In the new object add the following:
+            <ol>
+                <li>Add Bootstrap with level 8 to the front end skill sets</li>
+                 <li>Add Bootstrap with level 8 to the front end skill sets</li>
+                 <li>Add Express with level 9 to the back end skill sets</li>
+                 <li>Add SQL with level 8 to the data base skill sets</li>
+                 <li>Add SQL without level to the data science skill sets</li>
+            </ol>
+        </li>
+
+    </ol>
+    
+    <script>
+    
+        //forEach 
+        console.log('===================== forEach example ===================')
+        let fruits = ['Apple', 'Banana', 'Pear', 'Pinapple', 'Grapes'];
+        fruits.forEach(fruit => { console.log(fruit)});
+
+        //map()
+        console.log('===================== Map() example ===================')
+        let numbers = [3,4,5,6];
+        let numbersByThree = numbers.map((num) => { return num * 3 });
+        //original array is not changed, returns a new array
+        console.log(numbersByThree);
+
+        //filter()
+        console.log('==================== filter() example ===============')
+        const countries = [
+                    'Albania',
+                    'Bolivia',
+                    'Canada',
+                    'Denmark',
+                    'Ethiopia',
+                    'Finland',
+                    'Germany',
+                    'Hungary',
+                    'Ireland',
+                    'Japan',
+                    'Kenya'
+                    ];
+        console.log(countries);
+        const countriesContainingLand = countries.filter(country => country.includes('land'));
+        console.log(countriesContainingLand);
+
+        const countriesWithSixWords = countries.find(country => country.length === 7);
+        console.log(countriesWithSixWords);
+        
+
+
+        //reduce()
+        console.log('================== reduce() example =================')
+        const sum = numbers.reduce((accum, curr) => {return accum + curr});
+        console.log(sum); //returns 18
+
+        //example of function declaration
+            //function sumOfNumbers () {
+                
+            //}
+
+        //example of function expression
+            //const a = function(a, b) { return a * b }
+            //can be stored in a variable
+        
+        //Write a function called sumOfNumbers. It takes unlimited number of integers as parameters and it returns the sum.
+
+        //SumOfNumbers
+        console.log('============= sum of numbers with function declaration ====================');
+        //with function declaration
+        function sumOfNumbers(nums) {
+            let sum = 0;
+            for (const num of nums) {
+                sum = sum + num;
+            }
+
+            return sum;
+
+        }
+        console.log(sumOfNumbers([34,22,29,89,10]));
+        
+        //with arrow function
+        console.log('============= sum of numbers with arrow function ====================');
+        sumOfNumbers = (nums) => {
+            let sum = 0;
+            for (const num of nums) {
+                sum = sum + num;
+            }
+            return sum
+        }
+        console.log(sumOfNumbers([34,22,29,89,10]));
+
+        //4. Write a function which calculate mean, median and range of an array.
+
+        console.log('============ destructure the array of arrays student =============')
+        //5. A junior developer structure student name, skills and score in array of arrays which may not easy to read. Destructure the following array name to name, skills array to skills, scores array to scores, JavaScript score to jsScore and React score to reactScore variable.
+        const student = ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]]
+        const [name, skills, scores] = student;
+        const [, , jsScore, reactScore] = scores;
+        console.log(name, skills, scores, jsScore, reactScore);
+        console.log(`Student name is ${name}`);
+        console.log(`Student skills are ${skills}`);
+        console.log(`Student scores are ${scores}`);
+
+
+        //6. Write a function called convertArrayToObject which can convert the array to a structure object.
+
+        console.log('=== Write a function called convertArrayToObject which can convert the array to a structure object. ==')
+        console.log('====== example original ========')
+        const students = [
+                            ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]],
+                            ['John', ['HTM', 'CSS', 'JS', 'React'], [85, 80, 85, 80]]
+                        ]
+        console.log(students);
+        console.log('=========== example result ===============')
+        const example = [
+      {
+        name: 'David',
+        skills: ['HTM','CSS','JS','React'],
+        scores: [98,85,90,95]
+      },
+      {
+        name: 'John',
+        skills: ['HTM','CSS','JS','React'],
+        scores: [85, 80,85,80]
+      }
+    ]
+
+        console.log(example)
+
+        console.log('========== exercise result ========')
+        const convertArrayToObject = () => {
+        
+            const [objStudent1] = students;
+            const [, objStudent2] = students;
+            const [studentName1, studentSkills1, studentScores1] = objStudent1;
+            const [studentName2, studentSkills2, studentScores2] = objStudent2;
+            let studentObj = [{name: studentName1, skills: studentSkills1, scores: studentScores1},
+                              {name: studentName2, skills: studentSkills2, scores: studentScores2}];
+            console.log(studentObj); 
+
+            } 
+                
+        console.log(convertArrayToObject(students));
+
+
+        //7. Copy the student object to newStudent without mutating the original object. In the new object add the following:
+
+        //         Add Bootstrap with level 8 to the front end skill sets
+        //         Add Express with level 9 to the back end skill sets
+        //         Add SQL with level 8 to the data base skill sets
+        //         Add SQL without level to the data science skill sets
+
+        const devStudent = {
+                name: 'David',
+                age: 25,
+                skills: {
+                    frontEnd: [
+                        { skill: 'HTML', level: 10 },
+                        { skill: 'CSS', level: 8 },
+                        { skill: 'JS', level: 8 },
+                        { skill: 'React', level: 9 }
+                        ],
+                    backEnd: [
+                        { skill: 'Node',level: 7 },
+                        { skill: 'GraphQL', level: 8 },
+                        ],
+                    dataBase:[
+                        { skill: 'MongoDB', level: 7.5 },
+                        ],
+                    dataScience:['Python', 'R', 'D3.js']
+                }
+            }
+
+        const newStudent = Object.assign({}, devStudent);
+        console.log(newStudent);
+        newStudent.skills.frontEnd.push({skill: 'Bootstrap', level: 8});
+        newStudent.skills.backEnd.push({skill: 'Express', level: 9});
+        newStudent.skills.dataBase.push({skill: 'SQL', level: 8});
+        newStudent.skills.dataScience.push({skill: 'SQL', level: null});
+
+        console.log(newStudent); 
+
+        //8. Use the student object to solve the following questions:
+        //Find the length of student object keys
+        //Find the length of the student object values
+        //Find the length of skills object keys
+        //check if the student object has graphicDesign property
+        //Iterate the keys of the student object
+
+        console.log('============ Find the length of student object keys ================')
+        const keys = Object.keys(newStudent);
+        console.log(`student has ${keys.length} object keys`);
+
+        console.log('============ Find the length of the student object values ================')
+        const values = Object.values(newStudent);
+        console.log(`student has ${values.length} object values`);
+
+        console.log('============ Find the length of skills object keys ================')
+        const skillKeys = Object.keys(newStudent.skills);
+        console.log(`student has ${skillKeys.length} skills object keys`);
+
+        console.log('===== Check if the student has the graphic design property ======')
+        for (const key in skillKeys) {
+            if (key.match('Graphic Design')) {
+                console.log('true')
+            } 
+                console.log('false')
+            
+        }
+
+        for (const key in skillKeys) {
+            console.log(skillKeys[key])
+            if(key.match('frontEnd')) {
+                console.log('matching')
+            } else {
+                console.log('not matching')
+            }
+        } 
+        
+
+            
+        
+        
+
+        console.log('====== Iterate the keys and values of the student object=====')
+        for (const key in keys) {
+            console.log (keys[key])
+        }
+        for (const key in skillKeys) {
+            console.log(skillKeys[key]);
+        }
+
+        //9. Make a function called add which give truthy value when add(a, b) === add(a)(b)
+
+        //10. Write a function called checkDataTypes it takes an array and a data type. It returns true if the array has the same data types.
+
+        console.log('============= checkDataTypes =============');
+        const checkDataTypes = (arr) => {
+            const arrTypes = []
+            for (const item of arr) {
+                console.log(typeof(item));
+                arrTypes.push(typeof(item));
+                console.log(arrTypes)
+            }
+
+            for (const type of arrTypes) {
+                if (arrTypes[0] !== type) {
+                    return false
+                }
+            }
+            return true
+        }
+
+        console.log(checkDataTypes(['mike', 'john', 'kati']));
+       
+
+
+        
+
+
+
+
+
+
+
+
+    
+    </script>
+</body>
+</html>

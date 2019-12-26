@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Day 3</title>
+</head>
+<body>
+
+    <h1>JavaScript Day 3</h1>
+    
+
+    <script>
+        console.log("============ SCOPE ================");
+
+var num = 2;
+if (true) {
+    var num = 3;
+    console.log(num);
+    if (true) {
+        console.log(num)
+    }
+} 
+console.log(num)
+
+//write a function that returns first name and last name
+
+const fullName = (firstName, lastName) => `${firstName} ${lastName}`; 
+console.log(fullName("Michele", "Zucca"));
+
+
+//write a function sumofallnums that takes a parameter n and returns the sum of all numbers from 0 to n
+
+sumOfAllNums = (nums) => {
+    let sum = 0;
+    for (i = 0; i < nums; i++) {
+        sum = sum + i;
+    }
+    return sum;
+}
+
+console.log(sumOfAllNums(100));
+
+// sumNumsInArray
+
+const sumNumsInArray = (arr) => {
+    let sum = 0;
+    for (i = 0; i < arr.length; i++) {
+        sum = sum + arr[i];
+
+    }
+    return sum;
+}
+
+console.log(sumNumsInArray([10, 20, 30, 40, 50]));
+
+//reverse the array
+
+console.log("=============reverse array=================")
+const reverseArray = (arr) => {
+    let output = [];
+    let len = arr.length - 1;
+    for (i = 0; i <= len; i++) {
+        output[i] = arr.pop();
+    }
+    return output;
+}
+
+console.log(reverseArray([5, 10, 20, 30, 40, 50]))
+
+console.log("============= square num =================")
+
+
+const square = (num) => num * num;
+console.log(square(10));
+
+
+const addTwoNums = (num1, num2) => num1 + num2;
+console.log(addTwoNums(5,15));
+
+
+//Math.PI, Math.floor(), Math.random(), Math.ceil(), Math.sqrt(), Math.abs()
+
+const PI = Math.PI;
+const BOILING_POINT = 100;
+console.log(PI);
+
+console.log(Math.floor(PI));
+console.log(Math.sqrt(4));
+console.log(Math.round(Math.sqrt(2)));
+console.log(2 ** 0.5);
+console.log(Math.floor(Math.random()*11));
+
+
+//create an array of 7 random numbers
+arrayOfSevenRandomNums = (n = 7) => {
+    let nums = [];
+    for (let i = 0; i < n; i++) {
+        let randomNum = (Math.floor(Math.random()*11))
+        nums.push(randomNum)
+    }
+    return nums;
+
+}
+
+console.log(arrayOfSevenRandomNums());
+
+//function isEven, takes a number parameter and it returns a boolean
+
+isEven = (num) => num % 2 === 0 ? true : false;
+console.log(isEven(20));
+
+    </script>
+</body>
+</html>

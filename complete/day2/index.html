@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Day 2</title>
+</head>
+<body>
+    <h1>JavaScript Day 2</h1>
+
+    <script>
+
+        let school = "Coding Academy";
+        console.log(school);
+        console.log(school.match('a')); //returns only one a
+        console.log(school.match(/a/ig)); //returns all a's
+        console.log(school.match('r')); //returns null
+
+        let school1 = "Integrify";
+        let school2 = " Academy";
+
+        console.log(school1.concat(school2));
+
+        let sent = "Everyone is looking for love. And it is true love. Love is great. I love to love, how much can you love?";
+        console.log(sent.match(/love/ig))
+        console.log(sent.search(/is/ig))
+        console.log(sent.indexOf('love'));
+
+        //CONDITIONALS
+        /*if(condition) {
+            //block code
+        }*/
+
+        let weather = "fresh";
+        if(weather === 'rainy' || weather === "cloudy") {
+            console.log("Take an umbrella")
+        }   else if(weather === 'sunny' || weather === 'fresh'){
+            console.log("Sun is shining! Let's go to the beach");
+        }
+
+        let month = 'autumn';
+        switch(month) {
+            case 'autumn':
+                console.log('take an unmbrella');
+                break;
+            case 'winter':
+                console.log('we can go to ski');
+                break;
+            default: 
+                console.log('no one knows the wather');
+        }
+
+        isStomachEmpty = true;
+        isStomachEmpty ? console.log("let's go to eat") : console.log('we can wait');
+
+        //ARRAYS
+
+        let numbers = [1,2,3,4,5,6,7,8,9];
+        console.log(numbers.length)
+        let lastIndex = numbers.length - 1;
+        console.log(numbers[lastIndex]);
+        console.log(numbers.length - 1);
+        numbers[0] = 11;
+        numbers[lastIndex] = 80;
+        console.log(numbers);
+        console.log(numbers.sort());
+
+        //FOR LOOPS
+
+        for (let i = 5; i <= 10; i++) {
+            console.log(`${i} x ${i} = ${i*i}`);
+        }
+
+        const countries = ['Finland', 'Estonia', 'Sweden', 'Denmark', 'Norway'];
+        output = []
+
+        for (let i = 0; i < countries.length; i++) {
+            if (countries[i].includes('land')) {
+            console.log(countries[i].toUpperCase())
+            }
+        }
+
+        const cars = ["Volvo", "Fiat", "Honda", "Nissan", "Mercedes"];
+        for (let i = 0; i < cars.length; i++) {
+            
+                console.log(cars[i].toUpperCase());
+
+        }
+
+        function capitalizeCars(cars) {
+            for(let i = 0; i < cars.length; i++) {
+                if(cars[i].match("Volvo")) {
+                    console.log(cars[i].toUpperCase())
+                }
+            }
+        }
+
+        console.log(capitalizeCars(["Volvo", "Fiat", "Honda", "Nissan", "Mercedes"]))
+
+        //WHILE LOOPS
+        /*while(condition) {
+            //code goes here
+            //increment/decrement
+        }*/
+
+        console.log("=================== while loop ==============")
+        let i = 0;
+        while(i <=5) {
+            console.log(i);
+            i++;
+        }
+
+        console.log("====================== while loop ===============")
+        let a = 5;
+        while(a >=0) {
+            console.log(a);
+            a--;
+        }
+
+        //DO WHILE LOOPS
+        console.log("====================== do while loop")
+        let k = 5;
+        do {
+            console.log(k);
+            k--;
+        } while(k >= 2)
+
+        //FOR OF LOOPS
+        for(const country of countries) {
+            console.log(country.toUpperCase())
+        }
+        //number of is for arrays, number in is for object
+
+        console.log('================= uppercase with Map function =============')
+        //Uppercase using map
+        let shoppingCart = ["Apples", "Bananas", "Strawberrries", "Avocado", "Grapes"];
+        console.log(shoppingCart);
+        shoppingCart.map(shoppingItem => (
+            console.log(shoppingItem.toUpperCase())
+        ))
+
+        //FURTHER ARRAYS
+
+        const names = Array(8).fill("Volvo");
+        console.log(names)
+        
+        const nums = [1, 2, 3];
+        nums.push(4,5,6,7);
+        console.log(nums);
+        nums.pop();
+        console.log(nums);
+        nums.shift();
+        console.log(nums);
+        nums.unshift("milk");
+        nums.push(false);
+        console.log(nums);
+
+        //Splice
+        //array.splice(index, number, substitute)
+        nums.splice(2,1,"sword")
+        nums.splice(0,1,"avocado");
+        console.log(nums)
+        nums.slice(7)
+        console.log(nums);
+        nums.splice(4,5,"pear","dog");
+        console.log(nums)
+        nums.splice(1,2,"yes");
+        console.log(nums)
+        
+
+        //FUNCTIONS
+
+          /*
+        function nameOfFunction(parameter1, parameter2) {
+            //code goes here
+        }
+        nameOfFunction(argument1, argument2)*/
+
+        calculateAge = (dateOfBirth) => {
+            let year = 2019;
+            return year - dateOfBirth;
+        }   
+        console.log(calculateAge(1990));
+
+        //AREA OF CIRCLE
+        areaOfCircle = (pi = 3.14, r = 10) => {
+            let area = pi *(r**2)
+            return area;
+        }
+        console.log(areaOfCircle(20));
+
+        
+        //ADD NESS to a name
+        addNess = (name) => {
+            return name + `ness`;
+        } 
+        console.log(addNess('David'));
+
+
+        //Print full name
+        function printFullName(firstName, lastName) {
+            const fullName = `${firstName} ${lastName}`;
+            console.log(fullName);
+        } 
+        printFullName("Michele","Zucca");
+
+        //Create an Array of 100 numbers
+
+        findEvenNumbers = (num) => {
+            const arrayOfEvenNum = [];
+            for (let i = 0; i <= num; i ++) {
+                //checks if numbers are even
+                if(i % 2 === 0) {                   
+                 arrayOfEvenNum.push(i);
+                 //will push all the even numbers into the array
+                }
+                //if by mistake the return is put here, the loop will run only once
+            }
+            //once the loop is finished the values will be stored in the empty array
+                return arrayOfEvenNum; 
+        }
+
+        console.log(findEvenNumbers(50));
+
+        sumOfEvens = (nums) => {
+            let sum = 0;
+            for(let i = 0; i <= nums; i++) {
+                if(i % 2 === 0) {
+                    sum = sum + i;
+                } 
+            }
+            return sum;
+        }
+        console.log(sumOfEvens(100));
+
+        sumOfOdds = (nums) => {
+            let sum = 0;
+            for(let i = 0; i <= nums; i++) {
+                if(i % 2 !== 0) {
+                    sum = sum + i;
+                }
+            }
+            return sum
+        }
+        console.log(sumOfOdds(100));
+
+        //calculate weight, mass and gravity => mass * gravity
+        //we can add a default value to the parameter
+        calculateWeight = (mass, gravity = 9.81) => {
+            const weight = mass * gravity;
+            return weight;
+        }
+        console.log(calculateWeight(60, 2.61));
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

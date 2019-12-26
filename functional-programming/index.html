@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Functional Programming</title>
+</head>
+<script src="countries.js"></script>
+<script src="countriesObj.js"></script>
+<body>
+
+    <h1>Functional Programming</h1>
+
+    <script>
+    
+    //Functional Programming
+    //forEach: Iterate an array elements and use for array. It takes a callback function with elements and index parameter.
+    //example 
+    // arr.forEach(function(element, index) {
+    //     console.log(index, element)
+    // })
+    // or with arrow function 
+    // arr.forEach((element, index) => {
+    //     console.log(index, element)
+    // })
+
+    // or with arrow function and explicit return
+    // arr.forEach((element, index) => console.log(index, element))
+
+    //map: Iterate an array elements and modify the array elements. It takes a callback function with elements and index parameter and return the modified array.
+
+    //square numbers with map
+    /*const numbers = [23, 11, 45, 21, 87];
+    const numbersSquared = numbers.map((num) => num **2);
+    console.log(numbersSquared);
+
+    //uppercase names with map 
+    const names = ["David", "Bibek", "Carl", "John", "Caroline", "Kati"];
+    const namesUppercased = names.map(name => name.toUpperCase());
+    console.log(namesUppercased);
+
+    //uppercase countries with Map
+    const countries = [
+                        'Albania',
+                        'Bolivia',
+                        'Canada',
+                        'Denmark',
+                        'Ethiopia',
+                        'Finland',
+                        'Germany',
+                        'Hungary',
+                        'Ireland',
+                        'Japan',
+                        'Kenya'
+                    ];
+
+    const countriesUppercased = countries.map((function(country){
+        return country.toUpperCase()
+    }))
+
+    //with arrow function
+    //const countriesUppercased = countries.map((country) => country.toUpperCase());
+    console.log(countriesUppercased);
+
+    //Filter: Filter out items which full fill filtering conditions
+    const countriesIncludingLand = countries.filter(country => country.includes("la"));
+    console.log(countriesIncludingLand);
+
+    const countriesEndByIa = countries.filter(country => country.includes('ia'));
+    console.log(countriesEndByIa);
+
+    const countriesHasFiveLetters = countries.filter(country => country.length === 5);
+    console.log(countriesHasFiveLetters);
+
+    const scores = [{name:'Asabeneh', score:95},{name:'Mathias', score:80},{name:'Elias', score:50},{name:'Martha', score:85},{name:'John', score:100}];
+
+    const scoreGraterThan80 = scores.filter(score => score.score > 80);
+    console.log(scoreGraterThan80);
+
+    //reduce Reduce takes a callback function. The call back function takes accumulator and current value as a parameter and returns a single value:
+
+    const nums = [1,2,3,4,5,6,7];
+    const sum = nums.reduce((accum, curr) => accum + curr);
+    console.log(sum);
+
+    //every: Check if all the elements are similar in one aspect. It returns boolean
+
+    const firstNames = ['Asabeneh', 'Mathias', 'Elias', 'Brook'];
+    const bools = [true, true, true, true];
+    const results = bools.every((b) => {
+        return b === true;
+    })
+    console.log(firstNames);
+
+    const checkType = firstNames.every((name) => typeof name === 'string');
+    console.log(checkType);
+
+    //some: Check if some of the elements are similar in one aspect. It returns boolean
+
+    //find: Return the first element which satisfies the condition
+    const ages = [34, 20, 19, 23, 45, 22, 18];
+    const agesLessThan20 = ages.find((age) => age < 20)
+    console.log(agesLessThan20);
+
+    //find the first car in the array with 7 letters lenght
+    const cars = ['Volvo', 'Audi', 'Mercedes', 'Ferrari', 'Fiat'];
+    const sevenLettersCar = cars.find((car) => car.length === 7);
+    console.log(sevenLettersCar);
+
+    //sort: The sort methods arranges the array elements either ascending or descending order. By default, the sort() method sorts values as strings.This works well for string array items but not for numbers. If number values are sorted as strings and it give us wrong result. Sort method modify the original array. It is recommended to copy the original document before you start sorting.
+
+    const products = ['Milk', 'Coffee', 'Sugar', 'Honey', 'Apple', 'Carrot'];
+    console.log(products.sort());
+    //Now the original products array  is also sorted 
+
+    //sorting an array of numbers
+    const numValues = [9.81, 3.14, 100, 37];
+    numValues.sort((a, b) => b - a);
+    console.log(numValues);
+
+    //sorting object arrays
+    const users = [{name:'Asabeneh', age:150}, {name:'Brook', age:50}, {name:'Eyo', age:100},{name:'Elias', age:22}];
+
+    users.sort((a, b) => {
+        if(a.age < b.age) return 1;
+        if(a.age > b.age) return -1;
+        return 0;
+    })
+
+    console.log(users);*/
+
+    //EXERCISES
+
+    const countries = ['Estonia', 'Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland'];
+    const names = ['Asabeneh', 'Mathias', 'Elias', 'Brook'];
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    //1. Explain the difference between forEach, map, filter, and reduce.
+        //for each iterates in the array and produces a callback function modifying the original array. map does not modify the original array. Filter returns all the element that satisfy the condition (find returns the first one). Reduce takes all the elements of the array and reduces them to a single value.
+
+    //2. Define a call function before you them in forEach, map, filter or reduce.
+    
+    //3. Use forEach() to console.log each country in the countries array.
+    console.log('==== Use forEach to console.log each country in the countries array. ===')
+    const consoleEachCountry = countries.forEach((country) => console.log(country));
+
+    //4. Use forEach() to console.log each name in the names array.
+    console.log('=== Use forEach to console.log each name in the names array. ===')
+    const conosoleEachName = names.forEach((name) => console.log(name));
+
+    //5. Use forEach() to console.log each number in the numbers array.
+    console.log('=== Use forEach to console.log each number in the numbers array.===')
+    const consoleEachNum = numbers.forEach((num) => console.log(num));
+
+    //6. Use map() to create a new array by changing each country to uppercase in the countries array;
+    console.log('=== Use map to create a new array by changing each country to uppercase in the countries array; ===')
+    const countriesUppercased = countries.map((country) => country.toUpperCase());
+    console.log(countriesUppercased);
+
+    //7. Use map() to create a new array by changing each number to square in the numbers array
+    console.log('=== Use map to create a new array by changing each number to square in the numbers array ===')
+    const numsSquared = numbers.map((num) => (num * num));
+    console.log(numsSquared);
+
+    //.8. Use map() to change to each name to uppercase in the names array
+    console.log('=== Use map to change to each name to uppercase in the names array ===');
+    const uppercasedNames = names.map(name => name.toUpperCase());
+    console.log(uppercasedNames);
+
+    //. 9 Use filter() to filter out countries containing land.
+    console.log('=== Use filter to filter out countries containing land. ===')
+    const countriesContainingLand = countries.filter((country) => country.includes('land'));
+    console.log(countriesContainingLand);
+
+    //. 10 Use filter() to filter out countries having six character.
+    console.log('=== Use filter to filter out countries having six character.===');
+    const countriesWithSixCharacters = countries.filter((country) => country.length === 6);
+    console.log(countriesWithSixCharacters);
+
+    //11. Use filter to filter out countries containing six letters and more in the country array.
+    console.log('=== Use filter to filter out countries containing six letters and more in the country array ===')
+    const sixLettersCountries = countries.filter((country) => country.length >= 6);
+    console.log(sixLettersCountries);
+
+    //12. Use filter to filter out country start with 'E';
+    console.log('===  Use filter to filter out country start with E ===')
+    const startsWith = countries.filter((country) => country.startsWith('E'));
+    console.log(startsWith);
+
+    //13. Chain two or more array iterators(eg. arr.map(callback).filter(callback).reduce(callback))
+
+
+    //14. Declare a function called getStringLists which takes an array as a parameter and then returns an array only with string items.
+    const itCompanies = ['Microsoft', 'Amazon', 'Apple', 'Facebook', 'Twitter']
+    console.log('====  turn array into a string ====')
+    const getStringLists = itCompanies.reduce(company => itCompanies.toString());
+    console.log(getStringLists);
+
+    //15. Use reduce to sum all the numbers in the numbers array.
+    console.log('== Use reduce to sum all the numbers in the numbers array ==')
+    const sumNums = numbers.reduce((accum, curr) => accum + curr);
+    console.log(sumNums);
+
+    //16. Use reduce to concatenate all the countries and to produce this sentence: Estonia, Finland, Sweden, Denmark, Norway, and IceLand are north European countries
+    console.log("== Use reduce to concatenate all the countries and to produce this sentence ==")
+    const concatenateSentence = countries.reduce((country) => countries.concat("are north European countries").toString());
+    console.log(concatenateSentence);
+    
+    //17. Explain the difference between some and every
+    //Some checks if some of the elements are similar in one aspect, every checks if all the elments are similar in one aspect. They both return booleans.
+
+    //18. Use some to check if some names' length greater than seven in names array
+    console.log('== Use some to check if some names length greater than seven in names array ==');
+    const someNames = names.some((name) => name.length > 7);
+    console.log(someNames); //returns true
+
+    console.log(countriesList);
+    //19. Use every to check if all the countries contain the word land
+    console.log('== Use every to check if all the countries contain the word land ==')
+    const allContainLand = countriesList.every((country) => country.includes('land'));
+    console.log(allContainLand);//
+
+    //20. Explain the difference between find and findIndex.
+    //find returns the element of the array, findindex returns the element index position in the array
+    
+    //21. Use find to find the first country containing only six letters in the countries array
+    console.log('=== Use find to find the first country containing only six letters in the countries array ===');
+    const firstSixLetterCountry = countriesList.find((country) => country.length === 6);
+    console.log(firstSixLetterCountry);
+    
+    //22. Use findIndex to find the position of the first country containing only six letters in the countries array
+    console.log('== Use findIndex to find the position of the first country containing only six letters in the countries array ==')
+    const findIndexOfSix = countriesList.findIndex((country) => country.length === 6);
+    console.log(findIndexOfSix);
+    
+    //23. Use findIndex to find the position of Norway if it doesn't exist in the array you will get -1.
+    console.log('======== use findIndex to find the position of Norway =============');
+    const findIndexNorway = countriesList.findIndex((country) => country.includes('Norway')); 
+    console.log(findIndexNorway);//returns 4
+    
+    //24. Use findIndex to find the position of Russia if it doesn't exist in the array you will get -1.
+    console.log('======== use findIndex to find the position of Russia =============');
+    const findIndexRussia = countriesList.findIndex((country) => country.includes('Russia'));
+    console.log(findIndexRussia); //returns -1
+    
+
+
+    //25. Declare a function called categorizeCountries which returns an array of countries which have some common pattern(you find the countries array in this repository as countries.js(eg 'land', 'ia', 'island','stan')).
+    const patternCoutries = countriesList.filter((country) => country.includes('land'));
+    console.log('countries with land', patternCoutries);
+
+    //26. Create a function which returns an array of objects, which is the letter and the number of times the letter is used to start with a name of a country.
+    
+    const countStartingLetter = () => {
+        for (const country of countriesList) {
+            let arrOfCountries = countriesList.filter((c) => country[0] == c[0]);
+            console.log(arrOfCountries);
+            for (const letter in arrOfCountries) {
+                
+
+                
+            }
+            
+            
+        }
+       
+       
+
+        //push matching letters into different objects
+        
+        
+    }
+    console.log(countStartingLetter());
+
+
+    
+    const countriesWithI = countriesList.filter((country) => country.startsWith('I'));
+    console.log(countriesWithI);
+    countCountriesWithLetterI = countriesWithI.map((country, count = 0) => count);
+    console.log(countCountriesWithLetterI)
+
+    
+    //27. Declare a getFirstTenCountries function and return an array of ten countries. Use different functional programming to work on the countries.js array
+   
+
+    
+    //28. Declare a getLastTenCountries function which which returns the last ten countries in the countries array.
+   
+    
+    //29. Find out which letter is used many times as initial for a country name from the countries array (eg. Finland, Fiji, France etc)
+    //const startingLetter = countriesList.map((country) => country.slice(0,1));
+    //console.log('Find out which letter is used many times as initial for a country name', startingLetter);
+    //countLetters = startingLetter.every((letter) => letter.length);
+
+    const countriesWithL = () => {
+        
+        const startCountry = countriesList.filter((country) => country.startsWith('L'));
+        console.log('return the letter and the number of times the letter is used to start the name of a country', startCountry);
+        let count = 0;
+        for (letter in startCountry) {
+            count++;
+        }
+   
+    }
+
+    console.log(`There are ${countriesWithL()} countries starting with the letter L.`);
+    
+
+
+    
+    //30. Use the countries information, in the data folder. Sort countries by name, by capital, by population
+        
+    //sort by name
+    /*countriesObj.sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+    })
+    console.log(countriesObj);*/
+
+    /*
+    //sort by capital
+    countriesObj.sort((a, b) => {
+        if (a.capital < b.capital) return -1;
+        if (a.capital > b.capital) return 1;
+        return 0;
+    })
+    console.log(countriesObj);*/
+
+    //sort by population
+    countriesObj.sort((a, b) => {
+        if (a.population < b.population) return -1;
+        if (a.population > b.population) return 1;
+        return 0;
+    })
+    console.log(countriesObj);
+
+
+  
+
+
+
+    
+    
+    
+    //31. Sort out the ten most spoken languages by location.
+    
+    //32. Sort out the ten most populated countries.
+
+
+    </script>
+    
+</body>
+</html>

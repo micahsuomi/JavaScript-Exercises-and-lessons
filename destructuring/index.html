@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destructuring</title>
+</head>
+<body>
+    <h1>Destructuring</h1>
+</body>
+
+<script>
+//Destructuring
+
+const numbers = [1,2,3];
+let [numOne, numTwo, numThree] = numbers;
+console.log(numOne, numTwo, numThree);
+
+const names = ['Michele', 'David', 'Daniel', 'John'];
+let [firstPerson, secondPerson, thirdPerson, fourthPerson] = names;
+console.log(firstPerson, secondPerson, thirdPerson, fourthPerson);
+
+//Destructuring an object
+
+const user = {
+    name: 'David Hauser',
+    email: 'davidhauser@integrify.com',
+    phone: 0403433333,
+    instagram: 'dave_hauzzz'
+}
+
+let {name, email, phone, instagram, facebook} = user;
+console.log(name, email, phone, instagram, facebook)//facebook will return undefined
+/*
+//Renaming during structuring
+const rectangle = {
+    height: 100,
+    width: 200,
+    area: 300
+}
+
+let {height:h, width:w, area:a} = rectangle;
+console.log(h, w, a);
+
+//Modifying data
+const circle = {
+    radius: 50,
+    area: 250,
+}
+let {radius = 20, area = 200} = circle;
+console.log(radius, area)
+*/
+//Destructuring keys as a function parameters. Lets create a function which take a rectangle object and it return a perimeter of a rectangle.
+//without destructuring
+const rect = {
+    width: 20,
+    height: 10
+}
+
+const calculatePerimeter = (rectangle) => {
+    return 2 * (rectangle.width + rectangle.height) 
+} 
+console.log(calculatePerimeter(rect))
+
+//width destructuring
+const calculatePerimeter2 = ({width, height}) => {
+    return 2 * (width + height);
+}
+console.log(calculatePerimeter2(rect));
+
+const person = {
+    firstName: 'Michele',
+    lastName: 'Zucca',
+    country: 'Finland',
+    city: 'Helsinki',
+    job: 'developer',
+    skills: [
+        'HTML',
+        'CSS',
+        'JavaScript',
+        'React',
+        'Sass',
+        'Python'
+    ],
+    languages: ['Italian', 'English', 'Finnish', 'Spanish'] 
+}
+
+console.log(person);
+
+// Lets create a function which give information about the person object without destructuring
+/*const getPersonInfo = obj => {
+    const skills = obj.skills;
+    const formattedSkills = skills.slice(0,-1).join(', ');
+    const languages = obj.languages;
+    const formattedLanguages = languages.slice(0, -1).join(', ');
+
+    return `${obj.firstName} ${obj.lastName} lives in ${obj.city}, ${obj.country}, he is a ${obj.job}, has the following skills: ${formattedSkills}. He speaks the following languages: ${formattedLanguages}.`
+}
+
+console.log(getPersonInfo(person));*/
+
+//with destructuring
+console.log('=== create a function that gets the person object info with destructuring ===');
+const getPersonInfo = ({
+    firstName,
+    lastName,
+    job,
+    city,
+    country,
+    skills,
+    languages
+}) => {
+    const formattedSkills = skills.slice(0, -1).join(', ');
+    const formattedLanguages= languages.slice(0, -1).join(', ')
+
+    return `${firstName} ${lastName} lives in ${city}, ${country}, he is a ${job}, has the following skills: ${formattedSkills}. He speaks the following languages: ${formattedLanguages}.`
+}
+console.log(getPersonInfo(person));
+
+//Exercises DEstructuring
+
+//1. Assign the elements of constants array to e, pi, gravity, humanBodyTemp, waterBoilingTemp.
+
+console.log('===  Assign the elements of constants array to e, pi, gravity, humanBodyTemp, waterBoilingTemp ===')
+const constants = [2.72, 3.14, 9.81,37, 100];
+const [e, pi, gravity, humanBodyTemp, waterBoilingTemp] = constants;
+console.log(e, pi, gravity, humanBodyTemp, waterBoilingTemp);
+
+//2. Assign the elements of countries array to fin, est, sw, den, nor
+console.log('=== Assign the elements of countries array to fin, est, sw, den, nor ===');
+const countries = ['Finland', 'Estonia', 'Sweden', 'Denmark', 'Norway'];
+const [fin, est, sw, den, now] = countries;
+console.log(fin, est, sw, den, now);
+
+//3. Destructure the rectangle object by its properties or keys.
+const triangle = {
+    width: 50,
+    height: 60,
+    area: 200,
+}
+
+let {width, height, area, perimeter = 300} = triangle;
+console.log(width, height, area, perimeter);
+
+//SETS
+//Set are a collection of unique elements. Lets see how to create a set
+
+const companies = new Set();
+
+console.log(companies.size);
+companies.add('Google');
+companies.add('Facebook');
+companies.add('Twitter');
+companies.add('Tesla');
+companies.add('Amazon');
+companies.add('LinkedIn');
+companies.add('Netflix');
+console.log(companies.size);//7 companies
+console.log(companies);//prints te set, has {} like an object
+
+//deleting a company from the set
+companies.delete('Facebook');
+companies.delete('Amazon');
+console.log(companies.size);//5 companies
+
+//checking if a company is present
+console.log(companies.has('Google')); //returns true
+console.log(companies.has('Apple')); //returns false
+
+//removes all the companies
+companies.clear();
+console.log(companies.size)//returns 0
+
+const languages = [
+  'English',
+  'Finnish',
+  'English',
+  'French',
+  'Spanish',
+  'English',
+  'French'
+]
+
+const langSet = new Set(languages);
+console.log(langSet);
+console.log(langSet.size);
+
+const counts = [];
+const count = {};
+
+for (const l of langSet) {
+    const filteredLang = languages.filter(lng => lng === 1)
+    console.log(filteredLang)
+    counts.push({lang: l, count: filteredLang.length})
+}
+
+console.log(counts);
+
+//Map
+
+const countriesMap = new Map();
+
+//adding values to the map
+console.log(countriesMap.size);
+countriesMap.set('Finland', 'Helsinki');
+countriesMap.set('Estonia', 'Tallin');
+countriesMap.set('Sweden', 'Stockholm');
+console.log(countriesMap);
+console.log(countriesMap.size);
+
+//getting a value from a map
+console.log(countriesMap.get('Finland'));
+
+//checking a key in a map
+console.log(countriesMap.has('Finland'));
+
+
+
+
+
+
+
+</script>
+</html>

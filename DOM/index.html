@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM Manipulation</title>
+</head>
+<body>
+
+    <h1 class="title" id="first-title">First Title</h1>
+    <h1 class="title" id="second-title">Second Title</h1>
+    <h1 class="title" id="third-title">Third Title</h1>
+    <h1></h1>
+
+    <input type ='text' placeholder = 'Mass in Kilogram' id="mass" />
+    <input type ='text' placeholder = 'Height in meters' id="weight" />
+     <button>Calculate BMI</button>
+
+    <!--<h2 class="title2" id="first-title2">First Title</h2>
+    <button class="change-color" id="btn-1">Change Color</button>
+
+    <h2 class="title2" id="second-title2">Second Title</h2>
+    <button class="change-color">Change Text</button>
+
+    <h2 class="title2" id="third-title2">Third Title</h2>
+    <button class="change-color">Change Background</button> -->
+
+    
+
+
+
+
+
+
+
+<script>
+
+    //getElementsByTagName() method returns an HTMLCollection object. An HTMLCollection is an array like list of HTML elements. The length property provides the size of the collection.
+    const allTitles = document.getElementsByTagName('h1');
+    console.log(allTitles);
+    console.log(allTitles.length);
+    for (let i = 0; i < allTitles.length; i++) {
+        console.log(allTitles[i])
+
+    }
+
+    //getElementsByClassName() method returns an HTMLCollection object. An HTMLCollection is an array like list of HTML elements. The length property provides the size of the collection. It is possible to loop through all the HTMLCollection elements. See the example below
+    /*const titles = document.getElementsByClassName('title');
+    console.log(titles);
+    console.log(titles.length);
+    for (let i = 0; i < titles.length; i++) {
+        console.log(titles[i]);
+    }*/
+
+    //getElementsById() targets a single HTML element. We pass the id without # as an argument.
+    /*let firstTitle = document.getElementById('first-title');
+    console.log(firstTitle);*/
+
+    //querySelector: can be used to select HTML element by its tag name, id or class. If the tag name is used it selects only the first element.
+
+    let secondTitle = document.querySelector('h2'); //selects the first available h2 element
+    //let secondTitle = document.querySelector('#second-title'); //select id with second-title;
+    //let secondTitle = document.querySelector('.title'); //selects the first available h2 element with the class '.title';
+
+    //querySelectorAll: can be used to select html element by its tag name or class. It return a nodeList which is an array like object which supports array methods. We can use for loop or forEach to loop through each nodeList elements.
+
+    const allSecondTitles = document.querySelectorAll('h2');
+    console.log(allSecondTitles.length);
+    for (let i = 0; i < allSecondTitles.length; i++) {
+        console.log(allSecondTitles[i]);
+
+    }
+
+    allSecondTitles.forEach(title => console.log(title));
+
+    //The setAttribute() method set any html attribute. It takes two parameters the type of the attribute and the name of the attribute. Let's add class and id attribute for the fourth title.
+
+    const titles = document.querySelectorAll('h1');
+    titles[3].setAttribute('class', 'title');
+    titles[3].setAttribute('id', 'fourth-title');
+
+    //or
+
+    titles[3].className = 'title';
+    titles[3].id = 'fourth-title';
+    titles[3].textContent = 'Fourth Title';
+/*
+    const buttonChangeColor = document.getElementById('btn-1');
+    buttonChangeColor.addEventListener('click', () => {
+        secondTitle.style.color = 'red';
+    })*/
+
+    //Lets add some style to our titles. If the element has even index we give it green color else red.
+
+    const allFirstTitles = document.querySelectorAll('h1');
+    titles.forEach((title, i) => {
+        title.fontSize = '24px';
+        if(i % 2 === 0) {
+        title.style.color = 'green';
+    } 
+    else {
+        title.style.color = 'red';
+    }
+    })
+
+    //creating an element 
+    let paragraph = document.createElement('p');
+    let firstParagraph = document.getElementById('first-paragraph');
+    for (let i = 0; i < 3; i++) {
+        smallTitle = document.createElement('h6');
+        smallTitle.className = 'small-title';
+        smallTitle.fontSize = '24px';
+        smallTitle.textContent = 'Small Title';
+        document.body.appendChild(smallTitle);
+
+    } 
+
+    //adding eventListeners
+    //Common HTML events:onclick, onchange, onmouseover, onmouseout, onkeydown, onkeyup, onload. We can add event listener method to any DOM object. Use use addEventListener() method to listen different event types on HTML elements. The following is an example of click type event.
+    //getting value from an input element
+
+    const mass = document.querySelector('#mass');
+    const weight = document.querySelector('#height');
+    const button = document.querySelector('button');
+    let bmi;
+    button.addEventListener('click', () => {
+        let bmi = mass.value * weight.value;
+    });
+
+    console.log(bmi)
+
+
+
+
+
+</script>
+    
+</body>
+</html>

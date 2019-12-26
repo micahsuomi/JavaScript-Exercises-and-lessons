@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test 1</title>
+</head>
+<body>
+
+        <h1>Test 1</h1>
+
+    
+    <script>
+
+        //1. Looping a triangle Write a loop that makes seven calls to console.log to output the following triangle:
+
+        let string ="#######";
+            for (let i = 0; i < string.length; i++) {
+            console.log(string[i]);
+        }
+
+
+    // 2. FizzBuzz Write a program that uses console.log to print all the numbers from 1 to 100, with two exceptions. For numbers divisible by 3, print "Fizz" instead of the number, and for numbers divisible by 5 (and not 3), print "Buzz" instead. When you have that working, modify your program to print "FizzBuzz" for numbers that are divisible by both 3 and 5 (and still print "Fizz" or "Buzz"for numbers divisible by only one of those).
+
+    for (let num = 0; num < 100; num++) {
+    console.log(num);
+    if (num % 3) {
+        console.log("Fizz")
+    } if (num % 5) {
+        console.log("Buzz")
+    } if (num % 5 && num % 3) {
+        console.log("FizzBuzz");
+    }
+    
+    }
+
+    //3. Maximum Math.max returns its largest argument. We can build something like that now. Write a function findMax that takes three arguments and returns their maxiumum. Without method Math.max method.
+
+    const findMax = (num1, num2, num3) => {
+        if (num1 > num2 && num1 > num3) {
+            console.log(num1);
+        } else if (num2 > num1 && num2 > num3) {
+            console.log(num2);
+        } else (console.log(num3))
+    }
+    findMax(0, 10, 5);
+    findMax(0, -10, -2);
+
+    //4 Reversing an array Arrays have a reverse method which changes the array by inverting the order in which its elements appear. For this exercise, write a function, reverseArray. The reverseArray, takes an array as argument and produces a new array that has the same elements in the inverse order. Without reverse method.
+
+    const reverseArray = (arr) => {
+    let output = [];
+    while(arr.length) {
+        output.push(arr.pop());
+    } return output;
+    }       
+    console.log(reverseArray(["Jane", "Mike", "John", "Kati", "Melissa"]))
+
+    //5. Modifying an array Write a function called modifyArray takes array as parameter and modifies the fifth item of the array and returns the array. If the array length is less than five it return ‘item not found’.
+
+    const modifyArray = (arr) => {
+        let output = [];
+        for (i = 0; i < arr.length; i++) {
+            return(arr[4].toUpperCase())
+
+        } 
+    }
+    console.log(modifyArray(["Avocado", "Tomato", "Potato","Mango", "Lemon","Carrot"]));
+
+    //6.Write a function which returns array of seven random numbers in a range of 0-9. All the numbers must be unique
+
+    //7. Write a funch which takes any number of arguments and return the sum of the arguments
+
+    //10. Create a function that takes two strings and returns true if the first argument ends with the second argument; otherewise return false . Take two strings as arguments. Determine if second string matches ending of first string. Return boolean value. Example
+    
+    // yourFunc("integrity", "ity")
+    // true
+    // yourFunc("integration", "tio")
+    // false
+    // yourFunc("connection", "sion")
+    // false
+    // yourFunc("connection", "tion")
+    // true
+
+    const matchString = (string1, string2) => {
+        if(string1.match(string2)) {
+            return true
+        } else{ return false
+        }
+    } 
+    matchString("integrity", "ity");
+
+    let companies ="Facebook, Google, Microsoft, Apple, IBM, Oracle, Amazon";
+    console.log(companies.replace("Google", "Integrify"))
+    console.log(companies.split(","));
+    let letterstart = companies.indexOf("c")
+    let companies1 = ["Apple", "Volvo", "Facebook", "Twitter"];
+    let companies2 = ["Supercell", "Rovio", "Integrify", "Tieto"];
+    let totalCompanies = companies1.concat(companies2);
+    console.log(totalCompanies);
+
+    const capitalizeCompanies = totalCompanies.map(function capitalizeCompanies(company) {
+        return company.toUpperCase()
+    } ) 
+    console.log(capitalizeCompanies);
+    console.log(capitalizeCompanies.toString())
+
+    var numbers = [175, 50, 25]
+    function reduce(total, num) {
+        return total - num
+    }
+    numbers.reduce();
+
+
+    </script>
+    </body>
+    </html>
