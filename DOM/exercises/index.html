@@ -30,6 +30,8 @@
 <body>
 
     <h1>DOM Exercises</h1>
+    <h1 class="test-header">Test Exercise</h1>
+    
     <p class="paragraph" id="first-paragraph">First Paragraph</p>
     <p class="paragraph" id="second-paragraph">Second Paragraph</p>
     <p class="paragraph" id="third-paragraph">Third Paragraph</p>
@@ -46,7 +48,7 @@
         <input type = 'text' class='height' placeholder="Mass in kilograms" />
         <input type = 'text' class='mass' placeholder="Height in cm" />
         <button>Calculate BMI</button>
-        <p>Your BMI is: <span id="bmi-result">0</span></p>
+        <p>Your BMI is: <span id="bmi-result"></span></p>
         <p id="feedback-display"></p>
 
     </div>
@@ -58,6 +60,17 @@
 
     <script>
     
+    //test
+    let allTitles = document.querySelectorAll('h1');
+    console.log(allTitles.length);
+    console.log(allTitles);
+    for (let i = 0; i < allTitles.length; i++) {
+        console.log(allTitles[i]);
+        allTitles[i].style.color = 'lightblue'
+    }
+
+
+
     //1. Create an index.html file and put four p elements as above: Get the first paragraph by using document.querySelector(tagname) and tag name
     let allParagraphs = document.querySelector('p');
     console.log(allParagraphs);
@@ -156,8 +169,9 @@
         hexaBox.className = 'hexa-color-box';
         hexaBox.style.height = '150px';
         hexaBox.style.width = '150px';
-        hexaBox.textContent = generateHexaColors()
-        hexaBox.style.background = generateHexaColors(); 
+        let bgColor = generateHexaColors()
+        hexaBox.textContent = bgColor;
+        hexaBox.style.background = bgColor; 
         hexaBox.style.color = 'white';
         hexaBox.style.padding = '3.3em 2em';
         hexaBox.style.fontSize = '20px';
@@ -167,9 +181,6 @@
     }
 
    
-
-    
-
     //13.align-items-sm-baseline Use the countries.js to visualize all the countries on the HTML document. You need one wrapper div and box for each countries. In the box display, the letter the country starts with, the name of the country and the number of characters for the country name.
     
     let countriesWrapper = document.querySelector('countries-wrapper');
@@ -207,7 +218,7 @@
         let bmiResult = document.getElementById('bmi-result');
         let feedback = document.getElementById('feedback-display');
 
-        BMI =  (mass.value / (height.value ** 2)) *100000;
+        BMI =  (mass.value / (height.value * height.value));
         console.log(BMI)
         bmiResult.textContent = BMI;
         if(BMI > 18.5 || BMI === 24.9) {
@@ -215,9 +226,9 @@
         } else if (BMI >= 18.5 || BMI === 24.9) {
         console.log('Normal Weight')
         } else if (BMI === 25 || BMI === 29.9) {
-        console.log('Overweight')
+            feedback.textContent = 'You are over weight'
         } else if (BMI >= 30) {
-        console.log('Obese')
+            feedback.textContent = 'You are obese :('
         }
         return BMI
 
@@ -227,7 +238,7 @@
         let bmi = mass / (height**2); 
         console.log(bmi);
     }
-    console.log(bmiCalculator(60, 1.70))
+    console.log(bmiCalculator(70, 1.70))
 
 
      

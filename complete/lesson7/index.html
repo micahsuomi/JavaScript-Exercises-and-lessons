@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 7 Dom</title>
+    <style>
+/*
+    .flex-container {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-gap: 1em;
+    }
+
+    .num {
+        padding: 2rem;
+        background-color: rgb(130, 214, 235); 
+        height: 5rem;
+        width: 5rem;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: white;
+        border-radius: 3px;
+    }
+    #mass {
+        margin-top: 2rem;
+    }
+*/
+
+    body {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .flex-container {
+        display: flex; 
+        justify-content: space-around;
+    }
+
+    .num-box {
+        padding: 2rem;
+        height: 8rem;
+        width: 8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 25px;
+    }
+
+    .country-wrapper {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 2rem;
+    }
+    .country {
+        border: 1px solid rgb(212, 201, 201);
+        background-color: rgb(234, 244, 248);
+        padding: 2rem;
+    }
+
+    .flag {
+        width: 100%;
+    }
+
+    </style>
+</head>
+
+<body>
+
+<!-- <div class="flex-container"></div>
+    <form onsubmit="calculateWeight()">
+    <input type ="text" id="mass" placeholder="insert your mass here">
+    <input type="text" id="gravity" placeholder ="insert gravity here">
+    <button class="btn">Click Me</button>
+</form>
+
+<form method="post" class="form"> 
+<input type ="text" id="mass2" name="mass2" placeholder="insert text">
+<input type="submit" value="submit" id ="submit">
+<p id="paragraph"></p>
+
+</form>
+<form id="user-form" method="post">
+    Text Input: <input type="text" name="first_name" id="first_name"><br/>
+    
+    <input type="submit" id="submit-btn">
+    <p id="paragraph2"></p>
+  </form>
+  
+  <button class="stop-btn">Stop</button>
+ -->
+    <!-- <h1 class="dom" id="first-title">First Day DOM</h1>
+    <h1 class="dom">DOM stands for Document Object Model</h1> 
+    <h1 class="dom">We are learning DOM</h1>
+    <h1 class="dom">Using DOM we can build a house</h1>
+    <h1 class="dom">Using DOM we can build a game</h1>
+    <h1 class="dom" id="last-title">Using DOM we can build an application</h1> -->
+<!-- <input type="text" class="text-input">
+<button class="btn-generate">Generate</button>
+<div class="key-code"></div> -->
+
+<div class="flex-container"></div>
+<p class="p"></p>
+
+<!-- <div class="country-wrapper"></div> -->
+
+<div class="country-wrapper">
+    <div>
+        <h2></h2>
+        <p></p>
+        <p></p>
+        <img class="flag"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

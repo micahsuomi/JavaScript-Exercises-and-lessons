@@ -1,0 +1,9 @@
+
+.result-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.text-result {
+    margin: .3em;
+}

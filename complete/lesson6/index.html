@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destructuring and Spreading</title>
+</head>
+
+<body>
+
+    <h1>Destructuring and Spreading</h1>
+
+    <script>
+        
+    //destructuring
+    const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let [num1, num2, num3, ...rest] = nums; //... is the spread operator, which will take the rest of the array
+    console.log(num1, num2, num3);
+    console.log(rest);
+
+    const countries = ['Italy', 'Brazil', 'France', 'Belgium', 'Sweden',  'Norway', 'Iceland', 'Denmark', 'Iceland','Finland'];
+
+    let [ita, bra, fra, ,...nordic] = countries; // with the , , we skip belgium
+    console.log(fra, ita, bra);
+    console.log(nordic);
+
+    const fullStack = [
+        ['HTML', 'CSS', 'JavaScript', 'React'],
+        ['Node', 'Express', 'MongoDB']
+    ];
+
+    let [frontEnd, backEnd] = fullStack;
+    console.log(frontEnd)
+
+    //destructuring objects
+
+    const rectangle = {
+        width: 20, 
+        height: 10
+    };
+
+    //known way to access an object
+    // let width = rectangle.width;
+    // let width = rectangle['width'];
+    // console.log(width);
+
+    //width destructuring
+    let {width:w, height:h, perimeter = (h+w)*2} = rectangle;
+    console.log('width:', w, 'height:', h, 'perimeter:', perimeter);
+    console.log(rectangle);
+
+
+    //destructuring an array of object of countries from a real API
+    /*const url = 'https://restcountries.eu/rest/v2/all'
+    fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+        console.log(data);
+        for (const country of data) {
+            let { name, capital, population, region, languages, topLevelDomain:domain } = country;
+            console.log(name, capital, population, region, languages, domain[0]);
+            for (const language of languages) {
+             let {name} = language;
+            console.log('language:', name);
+        }
+    }
+    });*/
+
+    //functions with spread operator
+
+    function sumOfNumbers(...n) {
+        //instad of putting for instance all the 5 parameters we can put the spread operator and put them under ...n and loop through them
+        let sum = 0;
+        for (let i = 0; i < n.length; i++) {
+            sum = sum + n[i];
+        }
+         return sum
+    }
+    
+    console.log(sumOfNumbers(1,2,3,4,5));
+
+    const sumNums = (...arg) => {
+        let sum = 0;
+        for(let i = 0; i < arg.length; i++) {
+            sum = sum + arg[i];
+        }
+        return sum
+    }
+
+    console.log(sumNums(1,2,3,4,5));
+
+    //with for of loop
+
+    const sumNumbers = (...params) => {
+        let sum = 0;
+        for(const num of params) {
+            sum += num
+        }
+        return sum;
+    }
+
+    console.log(sumNumbers(1,2,3,4,5));
+
+    const numbers = [13,22,44,57,61,78,99,8];
+    const numbers2 = [...numbers]; //the spread operator will create a duplicate array
+
+    numbers[6] = 33;
+    console.log(numbers)
+    console.log(numbers2);
+
+    const user = {
+        name: 'Michele',
+        age: 28,
+        country: 'Finland'
+    };
+
+    console.log(user);
+    //one way of copying an object using object.assign()
+    const user2 = Object.assign({}, user, {name:'Johanna', age: 24});
+    console.log(user2);
+
+    //with spread operator
+    const user3 = {...user, name: 'Aurora', age: 2};
+    console.log(user3);
+
+
+
+
+    
+    
+
+
+    
+
+
+
+
+
+    </script>
+</body>
+</html>

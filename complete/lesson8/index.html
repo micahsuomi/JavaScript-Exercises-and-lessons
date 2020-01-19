@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Lesson 8 Classes</title>
+</head>
+<body>
+
+    <h1>
+        Classes
+    </h1>
+
+    <p>Classes are creators/blueprints of objects</p>
+    <p>Classes have properties and methods</p>
+
+    
+<script>
+//Classes
+// const rectangle = {
+//     width: 20,
+//     height: 20
+// }
+
+//if we want to create many of them with different properties we need a creator
+class ClassName {
+
+}
+
+class Rectangle {
+    constructor(width, height = 40) {
+        //the constructor will create the blueprint
+        console.log(this);
+        this.width = width,
+        this.height = height
+    }
+
+}
+
+const rectangle1 = new Rectangle(20, 20);
+const rectangle2 = new Rectangle(40);
+const rectangle3 = new Rectangle(30);
+
+console.log(rectangle1);
+console.log(rectangle2);
+console.log(rectangle3);
+
+
+class Person {
+    constructor(firstName, lastName, age, country, skills) {
+        this.firstName = firstName,
+        this.lastName = lastName,
+        this.age = age,
+        this.country = country,
+        this.score = 0,
+        this.skills = [];
+
+    }
+    //getter get getFullName () {
+    getFullName() {
+        let fullName = `${this.firstName} ${this.lastName}`
+        return fullName
+    }
+
+    get getScore () {
+        return this.score
+    }
+
+    set setScore (score) {
+        this.score +=  score
+
+    }
+    addSkill (skills) {
+        this.skills.push(skills)
+    }
+    getPersonInfo () {
+        let fullName = this.getFullName();
+        let lastIndex = this.skills.length -1;
+        let skills = this.skills.slice(0, lastIndex).join(', ') + ` and ${this.skills[lastIndex]}`;
+        let info = `${fullName} lives in ${this.country}, he is ${this.age} years old and he has the following skills: ${skills}.`
+        return info
+    }
+
+    static favoriteSkills () {
+        //cannot access the class with the this.keyword
+        const skills = ['HTML', 'CSS', 'JS', 'React'];
+        let index = Math.round(Math.random() * skills.length);
+        return skills[index];
+
+    }
+
+}
+const person1 = new Person('Michele', 'Zucca', 29, 'Italy');
+const person2 = new Person('Johanna', 'Lamu', 26, 'Finland');
+const person3 = new Person('Aurora', 'Zucca', 2, 'Finland');
+
+const skills = ['HTML', 'CSS', 'JS', 'React'];
+for (const skill of skills) {
+    person1.addSkill(skill)
+}
+
+person1.addSkill('HTML');
+console.log(person1.getPersonInfo());
+console.log(person1);
+console.log(Person.favoriteSkills())
+console.log(person2);
+console.log(person3);
+
+
+// console.log(person1.getFullName());
+// console.log(person2.getFullName());
+
+console.log(person1.getFullName);
+console.log(person2.getFullName);
+console.log(person1.getScore);
+
+person1.setScore = 5;
+person2.setScore = 100
+person3.setScore = 299
+console.log(`${person1.firstName} score is ${person1.getScore}`)
+console.log(`${person2.firstName} score is ${person2.getScore}`)
+console.log(`${person3.firstName} score is ${person3.getScore}`)
+
+class Student extends Person {
+    //child in programming is called inheritance
+    constructor(firstName, lastName, age, country, gender) {
+        super(firstName, lastName, age, country)
+        this.gender = gender
+
+    }
+    getPersonInfo() {
+        let fullName = this.getFullName();
+        let lastIndex = this.skills.length -1;
+        let skills = this.skills.slice(0, lastIndex).join(', ') + ` and ${this.skills[lastIndex]}`;
+        let pronoun = this.gender == 'Male' ? 'he' : 'she';
+        let info = `${fullName} lives in ${this.country}, ${pronoun} is ${this.age} years old and ${pronoun} has the following skills: ${skills}.`
+        return info
+    }
+ 
+}
+
+const st1 = new Student('David', 'Smith', 25, 'Finland', 'Male');
+const st2 = new Student('Martha', 'Callum', 25, 'USA', 'Female');
+
+console.log(st1);
+
+console.log(st1.getPersonInfo());
+console.log(st2.getPersonInfo());
+
+//static method
+
+
+
+
+
+
+
+</script>
+</body>
+
+</html>

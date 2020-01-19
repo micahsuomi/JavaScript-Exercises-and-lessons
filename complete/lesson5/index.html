@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Day 5</title>
+</head>
+<body>
+    <h1>Day 5</h1>
+    
+</body>
+
+<script>
+
+//Higher order functions
+//call back function
+//functional programming
+
+//a higher order function is a function that takes another function as a parameter or returns a function
+//square = n * n
+//cube = n * n * n
+
+//we declare the function square
+/*const square = (n) => n * n;
+
+//the function cube takes two parameter
+const cube = (square, n) => {
+    return square(n) * n
+}
+console.log(cube(square, 2));*/
+
+const addTen = () => 10;
+
+const additionTotal = (callback, num1, num2) => {
+    return callback() + num1 + num2
+}
+console.log('add ten to a number ' + additionTotal(addTen, 2, 1));
+
+const square = (n) => n ** 2;
+const cube = (n) => n ** 3;
+
+const solveEquation = (square, cube, n) => {
+    return square(n) - cube(n) + 1
+}
+
+console.log('solve equation ' + solveEquation(cube, square, 2));
+
+
+
+//nameOfFunction(2)(3)
+
+const higherOrder = (n) => {
+    const doSomething = (m) => {
+        const doWhatEver = (t) => {
+            return n + m + t;
+        }
+        return doWhatEver
+    }
+    return doSomething
+}
+
+console.log(higherOrder(2)(3)(3));// 2 is the argument for param 'n', 3 is the argument for param 'm'
+//returns 6
+
+const numbers = [1,2,3,4];
+let sum = 0
+
+//return sum of the numbers
+//forEach
+numbers.forEach((item, index) => {
+    sum = sum + item
+    console.log(item, index, sum);
+
+})
+
+console.log(sum);
+
+const sumOfArr = (arr) => {
+    let sum = 0;
+    numbers.forEach(element => sum = sum + element);
+    return sum
+
+}
+console.log(sumOfArr());
+
+//with map()
+const countries = ['Finland', 'Estonia', 'Ireland', 'Italy', 'Iceland'];
+const capitalizeArr = countries.map((country) => country.toUpperCase());
+console.log(capitalizeArr);
+
+//with for of loop
+const capitalizeNames = (names) => {
+    const newNames = []
+    for (const name of names) {
+        newNames.push(name.toUpperCase())
+    }
+    return newNames
+}
+console.log(capitalizeNames(['John', 'David', 'Kati', 'Carol']));
+
+//map, filter, reduce, some, every, find, findIndex
+
+const squareNumbers = numbers.map((num) =>  num * num);
+console.log(squareNumbers);
+
+const products = [  {name: 'banana', price: 3},
+                    {name: 'apple', price: 1},
+                    {name: 'grape', price: 2},
+                    {name: 'pear', price: 5},
+                    {name: 'coffee', price: '77'},
+
+                ]
+const prices = products.map((item) => item.price);
+const productNames = products.map((item) => item.name);
+console.log(prices);
+console.log(productNames);
+
+const onePricesLessThan8 = products.find((item) => item.price < 8);
+console.log(onePricesLessThan8);//returns an object {name: banana price: 3}
+
+const allPriceLessThan8 = products.filter((item) => item.price < 8);
+console.log(allPriceLessThan8);
+
+const filteredPrices = prices.filter((price) => typeof(price) == 'number');
+console.log(filteredPrices);
+
+const sumOfPrices = filteredPrices.reduce((accum, curr ) => accum + curr);
+console.log('total prices amount is ' + sumOfPrices);
+
+
+
+//FOR EACH with countries
+countries.forEach(element => console.log(element.toUpperCase()));
+
+//MAP to get countries length
+const countriesLenght = countries.map(country => country.length);
+console.log(countriesLenght);
+
+
+
+//REDUCE
+const total = prices.reduce((accum, curr) => accum + curr);
+console.log(total);
+
+let sum2 = 0;
+for (const price of prices) {
+    sum2 = sum2 + price
+} console.log(sum2);
+
+//FILTER
+//will return all the countries with 'land'
+
+const filteredCountries = countries.filter((country) => !country.includes('land'));
+console.log(filteredCountries); //Finland, Ireland, Iceland. returns an array
+
+const allNums = [0,1,2,3,45,6,7,8,9,10,11];
+const evenNumbers = allNums.filter((num) => num % 2 === 0);
+console.log(evenNumbers);
+
+const firstNames = ['Caroline', 'Kati', 'Aurora'];
+const uppercasedNames = firstNames.map((name) => name.toUpperCase());
+console.log(uppercasedNames);
+
+//FIND => returns only the first country with 'land'
+const countriesWithLand = countries.filter(country => country.includes('land'));
+console.log(countriesWithLand)//Finland. it returns a string
+
+
+//EVERY
+
+const nums = [1, 2, 3, 4, 'Kati'];
+const isNumber = nums.every(num => typeof num == 'number');
+console.log(isNumber);// true
+
+const names = ['Bob', 'Kati', 'Miriam', 100];
+const isEveryStr = names.every(str => typeof str == 'string');
+const isStrSome = names.some(str => typeof str == 'string');
+console.log(isEveryStr);
+console.log(isStrSome);
+
+//Pure functions: return the same output
+const sq = (n) => {
+    return n * n
+}
+
+console.log(sq(2)); //it will return always the number squared, the same output, it doesn't matter the input
+
+
+//impure function. a random id generator returns a random output that can always change
+const generateID = (n) => {
+    const lettersAndNumbers = '0123456ABCDEFGHIJKLMNOPQRSTUVZabcdefghijklmnopqrstuvwxyz';
+    let id = '';
+    for (let i = 0; i < n; i++) {
+        let randomIndex = (Math.floor(Math.random()* lettersAndNumbers.length -1));
+        id = id + lettersAndNumbers[randomIndex]
+    }
+    return id
+
+}
+console.log(generateID(35));
+
+let five = 5;
+const addFive = (n) => {
+    return n + five;
+}
+
+console.log(addFive(1))
+
+
+
+
+</script>
+</html>

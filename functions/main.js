@@ -302,23 +302,23 @@ console.log("=============== sumOfEven ================")
     console.log(sumOfEven(100));
 
 //27. Declare a function name evensAndOdds . It takes a positive integer as parameter and it counts number of evens and odds in the number.
-console.log("===================even and odds==============");
+console.log("=================== even and odds ==============");
 const evensAndOdds = (num) => {
     let countEvens = 0;
     let countOdds = 0;
+    let resultArr = []
     for (let i = 0; i < num +1; i++) {
         if (i % 2 === 0) {
-            countEvens = countEvens + num[i];
-            console.log(countEvens)
-
+            countEvens++; 
          } else if(i % 2 !== 0) {
-             countOdds = countOdds + num[i];
+             countOdds++;
+             
          }
-        }  
+
+        }
+        resultArr.push(countEvens, countOdds);
+        return resultArr;
         
-
-        return countOdds     
-
 
     }
 
@@ -328,17 +328,7 @@ console.log(evensAndOdds(100));
 // The number of odds are 50.
 // The number of evens are 51.
 
-const testOdds = (num) => {
-    let countOdds = 0;
-    for (let i = 0; i < num + 1; i++) {
-        if(i % 2 !== 0) {
-            countOdds = countOdds + num[i];
-            console.log(countOdds)
-        }
-    }
-    return countOdds
-} 
-console.log(testOdds(100));
+
 
     
 
@@ -346,10 +336,15 @@ console.log(testOdds(100));
 // sum(1, 2, 3); // -> 6
 // sum(1, 2, 3, 4); // -> 10
 console.log("================ sum of arguments ================")
-function sumNumbers(num1,num2,num3) {
-    return num1 + num2 + num3
+function sumOfArguments() {
+    let sum = 0;
+    for (let i = 0; i < arguments.length; i++) {
+        sum = sum + arguments[i]
+    }
+    return sum;
 }
-console.log(sumNumbers(1,2,3));
+console.log(sumOfArguments(1,2,3));
+console.log(sumOfArguments(1,2,3,4));
 
 //29. Write a function which generates a randomUserIp.
 //example Addresses 128.0.0.0 to 191.255.255.255
@@ -392,7 +387,7 @@ console.log(randomMacAddress());
 
 //31. Declare a function name randomHexaNumberGenerator. When this function is called it generates a random hexadecimal number. The function return the hexadecimal number.
 
-console.log("================== randomHexaNumberGenerator =================");
+console.log("==== randomHexaNumberGenerator =====");
 function generateHexaColors() {
     let lettersNums = "0123456abcdef".split("");
     let randomHexa = [];
@@ -492,35 +487,42 @@ console.log(`rgb(${rgbColorGenerator()})`);
 
 
 //35. Write a function arrayOfHexaColors which return any number of hexadecimal colors in an array.
-console.log('=========== HEXA colors in an array ================')
-
-function arrayOfHexaColors() {
-    let hexaNumbers = "abcdef1234567890";
-    let hexaOutput = []
-    for (let i = 0; i < 6; i++) {
-        let randomHexa = hexaNumbers[(Math.floor(Math.random() * hexaNumbers.length))];
-        hexaOutput.push(randomHexa);
+console.log('Write a function which returns any num of hexa colors in an array');
+const arrayOfHexaColors = (n) => {
+    let hexaLettersNums = 'abcdef1234567890';
+    let hexa = '';
+    let hexaArr = [];
+    for(let i = 0; i < n; i++) {
+        for (let i = 0; i < 6; i++) {
+            let randomIndex = Math.floor(Math.random()* hexaLettersNums.length);
+            hexa = hexa + hexaLettersNums[randomIndex];
+              
+        }
+        hexaArr.push(`#${hexa}`);
+        hexa = '';
     }
-    return `#${hexaOutput.join('')}`;
+    return hexaArr
 }
-
-console.log(arrayOfHexaColors());
+console.log(arrayOfHexaColors(5));
 
 
 //36. Write a function arrayOfRgbColors which return any number of RGB colors in an array.
 console.log('=========== RGB colors in an array ================')
-arrayOfRgbColors = () => {
-    let rgbOutput = [];
-    for (let i = 0; i < 3; i++) {
-        let random = Math.floor(Math.random() * 255);
-        rgbOutput.push(random)
+const arrayOfRgbColors = (n) => {
+    let rgbColor = '';
+    let arrRgbColor = [];
+    for (let i = 0; i < n; i++) {
+        for(let i = 0; i < 3; i++) {
+            let randomIndex = Math.floor(Math.random()*255);
+            rgbColor = rgbColor + randomIndex;
+        }
+        arrRgbColor.push(`RGB${rgbColor}`);
+        rgbColor = '';
     }
+    return arrRgbColor;
 
-    return rgbOutput;
-   
 }
-
-console.log(arrayOfRgbColors());
+console.log(arrayOfRgbColors(4));
 
 //37. Write a function convertHexaToRgb which converts hexa color to rgb and it returns an rgb color.
 
@@ -534,35 +536,22 @@ console.log(arrayOfRgbColors());
         
 
 //   generateColors('rgb', 3)
-//   ['rgb(5, 55, 175','rgb(50, 105, 100','rgb(15, 26, 80']
+//   ['rgb(5, 55, 175'),'rgb(50, 105, 100'),'rgb(15, 26, 80')]
 //   generateColors('rgb', 1)
 //   'rgb(33,79, 176)'
 
-console.log('=== Write a function generateColors which can generate any number of hexa or rgb colors ===')
-const generateColors = (type) => {
-    let rgb = [];
-    let hexa = []
-
-    if (type === 'rgb') {
-        for (let i = 0; i < 3; i++) {
-            let random = Math.floor(Math.random() * 255);
-            rgb.push(random)
-        }
-    
-        return rgb;
-
-    } else if( type === 'hexa') {
-        let hexaNumbers = "abcdef1234567890";
-    for (let i = 0; i < 6; i++) {
-        let randomHexa = hexaNumbers[(Math.floor(Math.random() * hexaNumbers.length))];
-        hexa.push(randomHexa);
+console.log('Write a function which can generate any number of hexa or rgb colors')
+const generateColors = (type, n) => {
+    let typeOfColor;
+    const value = type.toLowerCase();
+    if('hexa' === value || 'hexadecimal' === value || 'hexavalue' === value) {
+        typeOfColor = arrayOfHexaColors(n);
+    } else if('rgb' === value || 'rgbColors' === value || 'RGB' === value) {
+        typeOfColor = arrayOfRgbColors(n);
     }
-    return `#${hexa.join('')}`;
-    }
-
+    return typeOfColor;
 }
-
-console.log(generateColors('rgb'))
+console.log(generateColors('hexa', 2));
 
     
 //40. Call your function shuffleArray, it takes an array as a parameter and it returns a shuffled array
@@ -612,17 +601,25 @@ console.log('============= is empty ===============')
 
 
 //43. Call your function sum, it takes any number of arguments and it returns the sum.
-console.log('==== function sum, it takes any number of arguments and it returns the sum. =====')
+console.log('unction sum, it takes any number of arguments and it returns the sum')
 
-function sum(a,b,c) {
-    return a + b + c;
-} console.log(sum(1929, 122, 121));
+function sum() {
+    let sum = 0;
+    for (let i = 0; i < arguments.length; i++) {
+        sum = sum + arguments[i];
+    }
+    return sum;
+    
+} console.log(sum(11, 122, 121));
 
 //44. Write a function called sumOfArrayItems, it takes an array parameter and return the sum of all the items. Check if all the array items are number types. If not give return reasonable feedback.
-console.log('====== sum of arrays =========================================')
+console.log('=== sum of arrays: check if data types are numbers, else return false ===')
 sumOfArrayItems = (arr) => {
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
+        if(typeof(arr[i]) != 'number') {
+            return false
+        }
         //the sum is equal to the initial sum plus the value of the array at index[i]
          sum = sum + arr[i];
     }
@@ -631,20 +628,40 @@ sumOfArrayItems = (arr) => {
 console.log(sumOfArrayItems([25,50,10,5,23]))
 
 //45. Write a function called average, it takes an array parameter and returns the average of the items. Check if all the array items are number types. If not give return reasonable feedback.
-console.log("=========== write a function called average ========")
+console.log("===  average: check if data types are numbers, else return false ====")
 const findAverage = (arr) => {
     let sum = 0;
-    let arrayIndexCount = 0;
     for (let i = 0; i < arr.length; i++) {
-        sum = sum + arr[i] 
-        console.log(typeof(arr[i]))
-     
+        sum = sum + arr[i];
+        if (typeof(arr[i]) != 'number') {
+            return false
+        }
+       
     }
-    let average = Math.round(sum / arr.length);
+    
+    let average = Math.round(sum / arr.length);  
     return average
 
 }
-console.log(findAverage([20,11,49,67,34]));
+console.log(findAverage([20,11,49,67]));
+
+
+//EXTRA check if numbers in the array are numbers
+
+console.log('===== check if numbers in the array are numbers =======')
+const checkIfNum = (arr) => {
+   for (let i = 0; i < arr.length; i++) {
+       if(typeof(arr[i]) != 'number') {
+        return false
+       } 
+
+   }
+   return true
+
+}
+console.log(checkIfNum([20, 22, 22, 22, 2]));
+
+
 
 
 
@@ -653,22 +670,18 @@ console.log("======= write a function that modifies the fifth item of the array 
     modifyArray = (arr) => {
         let output = [];
         for (let i = 0; i < arr.length; i++) {
-            let newWords = arr[i].slice();
-            if (arr.length === 5) {
-                newWords[4].toUpperCase()
-            }
-            output.push(newWords);
-
+            console.log(arr[i])
+            
+            newWord = arr[i].toUpperCase();
+            output.push(newWord);
+     
         }
+
     
         return output;       
     }
     console.log(modifyArray(['Avocado', 'Tomato', 'Potato','Mango', 'Lemon','Carrot']));
-let people = ['Mike', 'John', 'Carl', 'Dave', 'Kati'];
-let people2 = [];
-console.log(people[4].toUpperCase())
-console.log(people2.push(people))
-console.log(people2)
+
 // console.log(modifyArray(['Avocado', 'Tomato', 'Potato','Mango', 'Lemon','Carrot']);
 // // →['Avocado', 'Tomato', 'Potato','Mango', 'LEMON', 'Carrot']
 
@@ -746,18 +759,16 @@ console.log(checkDataType(['Michele','Dave','Bob']))
 
 //50. JavaScript variable name does not support special characters or symbols except $ or _. Write a function *isValidVariable which check if a variable is valid or invalid variable.
 console.log('========= is the variable valid or invalid variable ===========')
-isValidVariable = () => {
-    let string = "@hohohohoh"
+isValidVariable = (string) => {
     let symbols = "@£#%&/()[]{}+?´*'-;,:.".split("")
-    for (let i = 0; i < symbols.length; i++) {
-    }  if (symbols[i].match("@")) {
+      if (string.includes('@' || '£' || '#' || '%' || '&')) {
         console.log('invalid variable')
     } else {
         console.log('valid variable')
     }
     
 }
-    console.log(isValidVariable());
+    console.log(isValidVariable('@-'));
 
     console.log('============= match a string ===============')
     let str = "paris is a great city";
@@ -767,6 +778,7 @@ isValidVariable = () => {
     } else {
         console.log('not matching')
     }
+    
     
     
 //51. Write a function which returns array of seven random numbers in a range of 0-9. All the numbers must be unique.

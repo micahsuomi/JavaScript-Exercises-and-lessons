@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Test 5</title>
+</head>
+<body>
+
+    <h1>JavaScript Test 5</h1>
+    
+<script>
+
+//1. a) A weight of an object is different on different planet and it is calculated as w = mg. Write afunction which calculate the weight of an object. It takes mass and gravity as a parameter. If the gravity is not given assume it is earth and the the approximate gravity of the earth is 10 m/s2. A weight of a 100 kg object on different planets is as follows:
+
+
+const calculateWeight = (mass, gravity = 9.81) => {
+    return mass * gravity;
+
+}
+//  console.log(weight(100)) //Earth // 1000 N 
+console.log(`${calculateWeight(100)} N`);
+
+//   console.log(weight(100, 25)) //Jupiter // 2500 N 
+console.log(`${calculateWeight(100, 25)} N`);
+
+//   console.log(weight(100, 1.62)) //Moon // 162 N
+console.log(`${calculateWeight(100, 1.62)} N`);
+
+//   console.log(weight(100, 0.58)) //Pluto // 58 N
+console.log(`${calculateWeight(100, 0.58)} N`);
+
+const addNumbers = (num1, num2 = 0) => {
+    return num1 + num2
+}
+console.log(addNumbers(3, 2));
+console.log(addNumbers(5));
+console.log(addNumbers(5, 19));
+
+//1. b) Write a function which takes mass of an object and name of a planet and it returns the weight of the object in the planet. Different gravities in m/s2:
+
+// sun: 274
+// Jupiter:25
+// Earth: 9.79
+// Venus: 8.87
+// Mars:3.71
+// Moon: 1.62
+const weightOfObject = (mass, planet) => {
+    if(planet == 'Sun') {
+        return mass * 274
+    } else if (planet == 'Jupiter') {
+        return mass * 25 
+    }  else if (planet == 'Earth') {
+        return Math.round(mass * 9.79)
+    } else if (planet == 'Venus') {
+        return Math.round(mass * 8.87)
+    } else if (planet == 'Mars') {
+        return Math.round(mass * 3.71)
+    } else if (planet == 'Moon') {
+        return Math.round(mass * 1.62)
+    }
+};
+    
+
+console.log(weightOfObject(100, 'Earth'))
+
+//console.log(weightOfObject(100, 'earth'))
+// 979.00 N
+//   console.log(weightOfObject(100, 'Earth'))
+// 979.00 N
+console.log(weightOfObject(100, 'Venus'))
+// 887.00 N
+console.log(weightOfObject(100, 'Moon'))
+// 162 N
+console.log(weightOfObject(100, 'Sun'))
+// 162 N
+
+//2. Write a function called cleanText. The function takes raw text as a parameter and returns the clean text.
+
+const rawText = `%I $am@% a %tea@cher%, &and& I lo%#ve %tea@ching%;. There $is nothing; &as& mo@re rewarding as educa@ting &and& @emp%o@wering peo@ple. ;I found tea@ching m%o@re interesting tha@n any other %jo@bs. %Do@es thi%s mo@tivate yo@u to be a tea@cher!?`;
+
+const cleanText = (rawText) => {
+    let regEx = /[%$&#@!;]/g;
+    let newText = rawText.replace(regEx, '');
+    return newText;
+
+}
+console.log(cleanText(rawText));
+
+//3. After cleaning the text in the sentence from question number 2 you will get the following text. Count the number of words in this text. Don't include words with only one letter.
+
+let newText = cleanText(rawText);
+
+const countWords = (newText) => {
+
+    let words = newText.split(' ');
+    console.log(words);
+    let count = 0;
+    for (let i = 0; i < words.length; i++) {
+        count++
+       
+
+    }
+    return count
+}
+console.log(countWords(newText));
+
+let sentence = "Sometimes I get stuck with JavaScript exercises.";
+
+
+
+
+
+</script>
+</body>
+</html>
